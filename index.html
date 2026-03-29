@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pandey Enterprises | RO Systems & Spare Parts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: #f4f8fb; color: #0d2137; line-height: 1.6; }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: #0d2137; color: #a8c4d8;
+      padding: 6px 5%; display: flex;
+      justify-content: space-between; flex-wrap: wrap; gap: 4px; font-size: 0.75rem;
+    }
+    .top-bar span { display: flex; align-items: center; gap: 6px; }
+
+    /* Pureit Badge */
+    .pureit-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: linear-gradient(135deg, #1a4fa0 0%, #1565c0 100%);
+      color: white; font-size: 0.68rem; font-weight: 700;
+      padding: 3px 10px 3px 6px; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.25);
+      letter-spacing: 0.02em; white-space: nowrap;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .pureit-badge .badge-icon {
+      width: 16px; height: 16px; background: white; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #1565c0; font-size: 0.55rem; font-weight: 900; flex-shrink: 0;
+    }
+    .pureit-badge .badge-check { color: #4fc3f7; font-size: 0.58rem; margin-right: 1px; }
+
+    /* ── WHATSAPP FLOATING BUTTON ── */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: white; font-size: 1.7rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: waPulse 2.5s ease-in-out infinite;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.6), 0 4px 12px rgba(0,0,0,0.2);
+      animation: none;
+    }
+    .wa-float-tooltip {
+      position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+      background: #0d2137; color: white; padding: 6px 12px; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem; white-space: nowrap;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .wa-float-tooltip::after {
+      content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
+      border: 5px solid transparent; border-left-color: #0d2137;
+    }
+    .wa-float:hover .wa-float-tooltip { opacity: 1; }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 0 0 10px rgba(37,211,102,0); }
+    }
+    @media (max-width: 700px) {
+      .wa-float { bottom: 18px; right: 16px; width: 52px; height: 52px; font-size: 1.5rem; }
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: white; padding: 0 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 64px; position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 1px 0 #e0eaf0;
+    }
+    .logo h1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #0d2137; }
+    .logo p { font-size: 0.65rem; color: #0e7e8c; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { text-decoration: none; color: #6b8499; font-weight: 500; font-size: 0.9rem; }
+    .nav-right { display: flex; align-items: center; gap: 8px; }
+
+    .btn-nav {
+      background: none; border: 1.5px solid #e0eaf0; padding: 7px 13px;
+      border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; color: #0d2137; white-space: nowrap;
+    }
+    .btn-nav.user-logged { background: #e8f5f7; border-color: #0e7e8c; color: #0e7e8c; }
+    .btn-nav.admin-logged { background: #0d2137; color: white; border-color: #0d2137; }
+
+    .cart-btn {
+      background: #0d2137; color: white; border: none; border-radius: 10px;
+      cursor: pointer; width: 42px; height: 42px; position: relative; font-size: 1rem;
+    }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px; background: #e8841a;
+      color: white; width: 18px; height: 18px; border-radius: 50%;
+      font-size: 0.65rem; display: flex; align-items: center; justify-content: center; font-weight: 700;
+    }
+    .hamburger { display: none; background: none; border: none; font-size: 1.4rem; color: #0d2137; cursor: pointer; padding: 4px; }
+    .mobile-menu {
+      display: none; background: white; border-top: 1px solid #e0eaf0;
+      padding: 16px 5%; flex-direction: column; gap: 14px;
+      position: sticky; top: 64px; z-index: 199; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { text-decoration: none; color: #0d2137; font-weight: 500; font-size: 1rem; padding: 8px 0; border-bottom: 1px solid #f0f4f7; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0d2137 0%, #163352 100%);
+      padding: 50px 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+    }
+    .hero h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: white; line-height: 1.3; }
+    .hero h2 em { color: #e8841a; font-style: italic; }
+    .hero p { color: #8aafc8; margin: 16px 0 24px; font-size: 0.95rem; }
+    .hero-icon { text-align: center; }
+    .hero-icon i { font-size: 7rem; color: #0e7e8c; opacity: 0.85; }
+    .btn-primary {
+      background: #e8841a; color: white; padding: 12px 22px; border-radius: 10px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;
+    }
+
+    /* ── CATEGORY TABS ── */
+    .cat-tabs { display: flex; justify-content: center; gap: 8px; padding: 24px 5% 16px; flex-wrap: wrap; }
+    .cat-tab {
+      background: white; border: 1.5px solid #e0eaf0; padding: 8px 18px;
+      border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; color: #6b8499; transition: all 0.2s;
+    }
+    .cat-tab:hover { border-color: #0d2137; color: #0d2137; }
+    .cat-tab.active { background: #0d2137; color: white; border-color: #0d2137; }
+
+    /* ── PRODUCTS GRID ── */
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; padding: 12px 5% 50px; }
+    .product-card {
+      background: white; border-radius: 14px; overflow: hidden;
+      border: 1px solid #e0eaf0; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product-card:hover { box-shadow: 0 8px 24px rgba(13,33,55,0.1); transform: translateY(-2px); }
+    .product-img {
+      background: #e8f5f7; height: 160px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .product-img i { font-size: 3.2rem; color: #0e7e8c; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-body { padding: 14px; }
+    .product-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .product-desc { font-size: 0.78rem; color: #6b8499; margin-bottom: 8px; }
+    .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
+    .price-new { font-size: 1.2rem; font-weight: 700; color: #0d2137; }
+    .price-old { text-decoration: line-through; color: #b0c4d0; font-size: 0.78rem; }
+    .btn-add-cart {
+      width: 100%; background: #0d2137; color: white; border: none;
+      padding: 10px; border-radius: 8px; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+      display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s;
+    }
+    .btn-add-cart:hover { background: #0e7e8c; }
+
+    /* ── COMMERCIAL ── */
+    .commercial {
+      background: linear-gradient(135deg, #0d2137 0%, #163352 100%);
+      margin: 0 5% 50px; border-radius: 20px; padding: 36px;
+      display: flex; justify-content: space-between; align-items: center; color: white; gap: 20px;
+    }
+    .commercial h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 6px; }
+    .commercial p { color: #8aafc8; font-size: 0.88rem; margin-bottom: 16px; }
+
+    /* ── FOOTER ── */
+    footer { background: #0d2137; color: #7499b5; padding: 36px 5% 20px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-bottom: 24px; }
+    footer h3 { color: white; font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+    footer h4 { color: #a8c4d8; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    footer p { font-size: 0.85rem; line-height: 1.8; }
+    .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #1e3a56; font-size: 0.78rem; }
+
+    /* ── OVERLAY ── */
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300; display: none; }
+    .overlay.open { display: block; }
+
+    /* ── CART SIDEBAR ── */
+    .cart-sidebar {
+      position: fixed; top: 0; right: -420px; width: 380px; max-width: 100vw;
+      height: 100%; background: white; z-index: 400; transition: right 0.3s ease;
+      padding: 20px; display: flex; flex-direction: column; box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    }
+    .cart-sidebar.open { right: 0; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .cart-close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b8499; }
+    #cartBody { flex: 1; overflow-y: auto; padding-right: 4px; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f4f7; gap: 10px; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-weight: 600; font-size: 0.85rem; }
+    .cart-item-price { font-size: 0.78rem; color: #6b8499; }
+    .cart-qty-controls { display: flex; align-items: center; gap: 6px; }
+    .cart-qty-controls button {
+      background: #f0f4f7; border: none; width: 26px; height: 26px;
+      border-radius: 6px; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cart-qty-controls span { font-weight: 600; font-size: 0.9rem; min-width: 20px; text-align: center; }
+    .cart-footer { border-top: 1px solid #e0eaf0; padding-top: 14px; margin-top: 8px; }
+    .cart-total-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.05rem; margin-bottom: 12px; }
+    .wa-order-btn {
+      width: 100%; background: #25D366; color: white; padding: 13px; border: none;
+      border-radius: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    /* ── MODAL BASE ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+      z-index: 600; display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: white; border-radius: 20px; width: 100%; max-width: 420px;
+      overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .modal-header {
+      background: #0d2137; color: white; padding: 18px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .modal-header h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+    .modal-close { background: none; border: none; color: white; font-size: 1.3rem; cursor: pointer; opacity: 0.8; }
+    .modal-body { padding: 24px; }
+    .modal-tabs { display: flex; border-bottom: 2px solid #e0eaf0; margin-bottom: 20px; }
+    .modal-tab {
+      flex: 1; background: none; border: none; padding: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer;
+      color: #6b8499; border-bottom: 3px solid transparent; margin-bottom: -2px;
+    }
+    .modal-tab.active { color: #0d2137; font-weight: 600; border-bottom-color: #0e7e8c; }
+
+    /* Form fields shared */
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: #6b8499; margin-bottom: 5px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 11px 14px; border: 1.5px solid #e0eaf0;
+      border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: #0e7e8c; }
+    .btn-full {
+      width: 100%; padding: 12px; border: none; border-radius: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; margin-top: 4px;
+    }
+    .btn-primary-full { background: #0d2137; color: white; }
+    .btn-danger-full { background: #fee2e2; color: #dc2626; }
+    .user-info-box {
+      background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 12px;
+      padding: 16px; text-align: center; margin-bottom: 16px;
+    }
+    .user-avatar {
+      width: 56px; height: 56px; background: #0d2137; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.4rem; margin: 0 auto 10px;
+    }
+    .user-info-box .uname { font-weight: 700; font-size: 1rem; }
+    .user-info-box .uphone { font-size: 0.8rem; color: #6b8499; }
+
+    /* ── ADMIN OVERLAY ── */
+    .admin-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      z-index: 500; display: none; overflow-y: auto; padding: 20px;
+    }
+    .admin-overlay.open { display: block; }
+    .admin-box { background: white; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; }
+    .admin-bar {
+      background: #0d2137; color: white; padding: 16px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .admin-bar h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+    .admin-bar-right { display: flex; align-items: center; gap: 12px; }
+    .admin-logout-btn {
+      background: #dc2626; color: white; border: none; padding: 7px 14px;
+      border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    }
+    .admin-close { background: none; border: none; color: white; font-size: 1.1rem; cursor: pointer; opacity: 0.7; }
+    .admin-inner { padding: 20px; }
+
+    /* Admin login form */
+    #adminLoginPanel { max-width: 340px; margin: 0 auto; text-align: center; padding: 30px 0; }
+    #adminLoginPanel h3 { margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+    #adminLoginPanel p { color: #6b8499; font-size: 0.85rem; margin-bottom: 20px; }
+
+    /* Admin Tabs */
+    .a-tabs-row {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 20px; border-bottom: 2px solid #e0eaf0; padding-bottom: 12px;
+    }
+    .a-tab {
+      background: none; border: 1.5px solid #e0eaf0; padding: 7px 14px;
+      border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; color: #6b8499; transition: all 0.2s;
+    }
+    .a-tab.active, .a-tab:hover { background: #0d2137; color: white; border-color: #0d2137; }
+
+    /* Add Form */
+    .add-form { background: #f8fafb; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+    .add-form h4 { margin-bottom: 14px; font-family: 'Playfair Display', serif; font-size: 1.05rem; }
+    .add-form input, .add-form select, .add-form textarea {
+      width: 100%; padding: 10px 12px; margin-bottom: 10px;
+      border: 1.5px solid #e0eaf0; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    }
+    .add-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .btn-add-item {
+      background: #0e7e8c; color: white; border: none; padding: 10px 20px;
+      border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    }
+
+    /* Photo Upload */
+    .photo-upload-area {
+      border: 2px dashed #b0c4d0; border-radius: 10px; padding: 20px;
+      text-align: center; cursor: pointer; transition: all 0.2s; margin-bottom: 10px; background: white;
+    }
+    .photo-upload-area:hover { border-color: #0e7e8c; background: #f0f9fb; }
+    .photo-upload-area i { font-size: 2rem; color: #b0c4d0; display: block; margin-bottom: 6px; }
+    .photo-upload-area p { font-size: 0.82rem; color: #6b8499; }
+    .photo-preview {
+      width: 100%; height: 140px; object-fit: cover;
+      border-radius: 8px; display: none; margin-bottom: 10px;
+    }
+    #photoInput { display: none; }
+    .photo-remove-btn {
+      background: #fee2e2; color: #dc2626; border: none; padding: 5px 12px;
+      border-radius: 6px; cursor: pointer; font-size: 0.78rem; display: none; margin-bottom: 10px;
+    }
+
+    /* Data Table */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .data-table th { background: #f0f4f7; padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 2px solid #e0eaf0; }
+    .data-table td { padding: 9px 8px; border-bottom: 1px solid #f0f4f7; vertical-align: middle; }
+    .data-table tr:hover td { background: #fafcfd; }
+    .product-thumb { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; vertical-align: middle; }
+    .status-select { border: 1px solid #e0eaf0; border-radius: 6px; padding: 3px 6px; font-size: 0.75rem; font-family: 'DM Sans', sans-serif; }
+    .btn-danger { background: #fee2e2; color: #dc2626; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; }
+    .btn-success { background: #d1fae5; color: #065f46; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-decoration: none; display: inline-block; }
+    .table-responsive { overflow-x: auto; }
+    .empty-state { text-align: center; padding: 40px; color: #a0b4c4; }
+    .empty-state i { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 30px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0d2137; color: white; padding: 12px 22px;
+      border-radius: 10px; font-size: 0.88rem; z-index: 1000;
+      transition: transform 0.3s; white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      .top-bar { font-size: 0.7rem; padding: 6px 4%; }
+      .top-bar .loc-info { display: none; }
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .btn-nav span { display: none; }
+      .btn-nav i { margin: 0; }
+      .hero { grid-template-columns: 1fr; padding: 36px 4%; gap: 20px; text-align: center; }
+      .hero h2 { font-size: 1.7rem; }
+      .hero-icon { display: none; }
+      .cat-tabs { padding: 16px 4% 10px; gap: 6px; }
+      .cat-tab { padding: 6px 12px; font-size: 0.78rem; }
+      .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; padding: 8px 4% 40px; }
+      .product-img { height: 120px; }
+      .commercial { flex-direction: column; margin: 0 4% 40px; padding: 24px; text-align: center; }
+      .commercial i { font-size: 3rem !important; }
+      .admin-overlay { padding: 0; }
+      .admin-box { border-radius: 0; min-height: 100vh; }
+      .add-form-row { grid-template-columns: 1fr; }
+      .cart-sidebar { width: 100%; right: -100%; }
+      .modal-box { max-width: 100%; border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span><i class="fas fa-tint"></i> RO Specialist · Domestic &amp; Commercial</span>
+  <span>
+    <span class="pureit-badge">
+      <span class="badge-icon"><i class="fas fa-check"></i></span>
+      <i class="fas fa-check-circle badge-check"></i> Authorised LSP · Pureit
+    </span>
+  </span>
+  <span><i class="fas fa-phone-alt"></i> +91 90066 86591</span>
+  <span class="loc-info"><i class="fas fa-map-marker-alt"></i> Lalan Complex, Siwan, Bihar</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <h1>Pandey Enterprises</h1>
+    <p>RO Systems &amp; Spare Parts</p>
+  </div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#commercial">Commercial</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+    <!-- USER BTN — changes on login -->
+    <button class="btn-nav" id="userNavBtn" onclick="openUserModal()">
+      <i class="fas fa-user"></i> <span id="userNavLabel">Login</span>
+    </button>
+    <!-- ADMIN BTN -->
+    <button class="btn-nav" id="adminNavBtn" onclick="openAdminPanel()">
+      <i class="fas fa-user-shield"></i> <span>Admin</span>
+    </button>
+    <button class="cart-btn" id="cartOpenBtn">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="closeMobileMenu()">Home</a>
+  <a href="#products" onclick="closeMobileMenu()">Products</a>
+  <a href="#commercial" onclick="closeMobileMenu()">Commercial</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h2>Pure Water Solutions<br>for <em>Every Need</em></h2>
+    <p>Complete range of RO systems, membranes, filters, pumps and spare parts.</p>
+    <a href="https://wa.me/919006686591" class="btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+  </div>
+  <div class="hero-icon"><i class="fas fa-water"></i></div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<div id="products" style="padding-top: 8px;"></div>
+<div class="cat-tabs" id="categoryTabsContainer"></div>
+<div class="products-grid" id="productsGrid"></div>
+
+<!-- COMMERCIAL -->
+<div id="commercial" class="commercial">
+  <div>
+    <h3>Industrial RO Systems &amp; Bulk Supply</h3>
+    <p>Custom capacity systems for hotels, hospitals, factories &amp; more.</p>
+    <button class="btn-primary" id="commercialEnqBtn"><i class="fas fa-industry"></i> Get Commercial Quote</button>
+  </div>
+  <i class="fas fa-industry" style="font-size: 4.5rem; opacity: 0.3;"></i>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <h3>Pandey Enterprises</h3>
+      <p>Lalan Complex, Opposite Chair Shop,<br>Siwan, Bihar – 841226</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> +91 90066 86591<br>
+      <i class="fab fa-whatsapp"></i> WhatsApp: +91 90066 86591</p>
+    </div>
+    <div>
+      <h4>Products</h4>
+      <p>Domestic RO Systems<br>Commercial RO Systems<br>Membranes &amp; Filters<br>Spare Parts</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Pandey Enterprises · RO Specialist · Siwan, Bihar</div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a class="wa-float" href="https://wa.me/919006686591?text=Hello%20Pandey%20Enterprises%2C%20I%20need%20help%20with%20RO%20system" target="_blank" rel="noopener">
+  <span class="wa-float-tooltip">Chat on WhatsApp</span>
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- OVERLAY (cart + mobile) -->
+<div class="overlay" id="overlay"></div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3><i class="fas fa-shopping-cart" style="color:#0e7e8c;"></i> Your Cart</h3>
+    <button class="cart-close-btn" id="cartCloseBtn">&times;</button>
+  </div>
+  <div id="cartBody"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="wa-order-btn" id="waOrderBtn"><i class="fab fa-whatsapp"></i> Send Order on WhatsApp</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     USER LOGIN / REGISTER / ACCOUNT MODAL
+════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="userModalTitle"><i class="fas fa-user"></i> My Account</h3>
+      <button class="modal-close" onclick="closeUserModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- When NOT logged in: Login / Register tabs -->
+      <div id="authPanel">
+        <div class="modal-tabs">
+          <button class="modal-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+          <button class="modal-tab" id="tabRegister" onclick="switchAuthTab('register')">Register</button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="loginPhone" placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password">
+          </div>
+          <button class="btn-full btn-primary-full" onclick="doUserLogin()">Login</button>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="registerForm" style="display:none;">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="regName" placeholder="Aapka naam">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="regPhone" placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group">
+            <label>Address (Optional)</label>
+            <input type="text" id="regAddress" placeholder="City, State">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="regPassword" placeholder="Create password (min 4 chars)">
+          </div>
+          <button class="btn-full btn-primary-full" onclick="doUserRegister()">Create Account</button>
+        </div>
+      </div>
+
+      <!-- When logged in: Account info + logout -->
+      <div id="accountPanel" style="display:none;">
+        <div class="user-info-box">
+          <div class="user-avatar"><i class="fas fa-user"></i></div>
+          <div class="uname" id="accountName"></div>
+          <div class="uphone" id="accountPhone"></div>
+          <div class="uphone" id="accountAddress" style="margin-top:2px;"></div>
+        </div>
+        <h4 style="margin-bottom: 12px; font-size: 0.9rem; color: #6b8499;">MY ORDERS</h4>
+        <div id="myOrdersList" style="max-height: 200px; overflow-y: auto;"></div>
+        <button class="btn-full btn-danger-full" style="margin-top: 16px;" onclick="doUserLogout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ADMIN PANEL
+════════════════════════════════════════════════════════ -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-box">
+    <div class="admin-bar">
+      <h2><i class="fas fa-user-shield"></i> Admin Dashboard</h2>
+      <div class="admin-bar-right">
+        <button class="admin-logout-btn" id="adminLogoutBtn" style="display:none;" onclick="doAdminLogout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <button class="admin-close" id="adminCloseBtn"><i class="fas fa-times"></i> Close</button>
+      </div>
+    </div>
+    <div class="admin-inner">
+
+      <!-- ADMIN LOGIN PANEL -->
+      <div id="adminLoginPanel">
+        <h3>Admin Login</h3>
+        <p>Pandey Enterprises · Siwan</p>
+        <div class="form-group" style="text-align:left;">
+          <label>Username</label>
+          <input type="text" id="adminUser" placeholder="admin">
+        </div>
+        <div class="form-group" style="text-align:left;">
+          <label>Password</label>
+          <input type="password" id="adminPwd" placeholder="Enter password">
+        </div>
+        <button class="btn-full btn-primary-full" id="adminSubmitBtn">
+          <i class="fas fa-sign-in-alt"></i> Login to Admin
+        </button>
+        <p style="font-size:0.75rem; color:#a0b4c4; margin-top: 10px;">Default: admin / admin123</p>
+      </div>
+
+      <!-- ADMIN DASHBOARD -->
+      <div id="adminDash" style="display: none;">
+        <div class="a-tabs-row">
+          <button class="a-tab active" data-panel="orders"><i class="fas fa-list-alt"></i> Orders</button>
+          <button class="a-tab" data-panel="products"><i class="fas fa-boxes"></i> Products</button>
+          <button class="a-tab" data-panel="addproduct"><i class="fas fa-plus"></i> Add Product</button>
+          <button class="a-tab" data-panel="addcategory"><i class="fas fa-tags"></i> Categories</button>
+          <button class="a-tab" data-panel="customers"><i class="fas fa-users"></i> Customers</button>
+        </div>
+
+        <!-- ORDERS -->
+        <div id="panelOrders">
+          <h4 style="margin-bottom:14px;">All Orders</h4>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Customer</th><th>Phone</th><th>Items</th><th>Total</th><th>Date</th><th>Status</th><th>Del</th></tr></thead>
+              <tbody id="ordersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div id="panelProducts" style="display:none;">
+          <h4 style="margin-bottom:14px;">All Products</h4>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Photo</th><th>Name</th><th>Category</th><th>Price</th><th>Old Price</th><th>Action</th></tr></thead>
+              <tbody id="productsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ADD PRODUCT -->
+        <div id="panelAddProduct" style="display:none;">
+          <div class="add-form">
+            <h4>Add New Product</h4>
+
+            <!-- Photo upload -->
+            <p style="font-size:0.8rem; font-weight:600; color:#6b8499; margin-bottom:6px;">Product Photo</p>
+            <img id="photoPreview" class="photo-preview" alt="Preview">
+            <button class="photo-remove-btn" id="photoRemoveBtn" onclick="removePhoto()"><i class="fas fa-times"></i> Remove Photo</button>
+            <div class="photo-upload-area" id="photoUploadArea" onclick="document.getElementById('photoInput').click()">
+              <i class="fas fa-camera"></i>
+              <p>Tap to upload photo from gallery</p>
+              <p style="font-size:0.72rem; color:#b0c4d0; margin-top:4px;">JPG, PNG · Auto compressed</p>
+            </div>
+            <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
+
+            <input type="text" id="newProductName" placeholder="Product Name *">
+            <input type="text" id="newProductDesc" placeholder="Description">
+            <div class="add-form-row">
+              <input type="number" id="newProductPrice" placeholder="Price (₹) *">
+              <input type="number" id="newProductOldPrice" placeholder="Old Price (₹)">
+            </div>
+            <select id="newProductCategory">
+              <option value="domestic">Domestic RO</option>
+              <option value="commercial">Commercial RO</option>
+              <option value="spares">Spare Parts</option>
+            </select>
+            <input type="text" id="newProductIcon" placeholder="Icon class (e.g. fas fa-cog) — used if no photo" value="fas fa-cog">
+            <button id="saveProductBtn" class="btn-add-item"><i class="fas fa-save"></i> Save Product</button>
+          </div>
+        </div>
+
+        <!-- CATEGORIES -->
+        <div id="panelAddCategory" style="display:none;">
+          <div class="add-form">
+            <h4>Add New Category</h4>
+            <input type="text" id="newCategoryName" placeholder="Category Name (e.g., UV Filters)">
+            <input type="text" id="newCategoryKey" placeholder="Category Key (e.g., uv-filters)">
+            <button id="saveCategoryBtn" class="btn-add-item">Add Category</button>
+          </div>
+          <div id="categoriesList"></div>
+        </div>
+
+        <!-- CUSTOMERS -->
+        <div id="panelCustomers" style="display:none;">
+          <h4 style="margin-bottom:14px;">Customer List</h4>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Address</th><th>Joined</th><th>WhatsApp</th></tr></thead>
+              <tbody id="customersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════════════════
+const ADMIN_CREDENTIALS = { username: 'admin', password: 'admin123' };
+
+let products = [
+  { id:1, name:"Domestic RO System", desc:"8L storage, UV+UF purification", price:8999, oldPrice:12999, category:"domestic", icon:"fas fa-home", photo: null },
+  { id:2, name:"RO Membrane 75 GPD", desc:"High rejection, long life", price:1299, oldPrice:1899, category:"spares", icon:"fas fa-circle", photo: null },
+  { id:3, name:"Sediment Filter", desc:"5 micron, 10 inch", price:180, oldPrice:350, category:"spares", icon:"fas fa-filter", photo: null },
+  { id:4, name:"Commercial RO 250 LPH", desc:"SS frame, industrial grade", price:48500, oldPrice:59000, category:"commercial", icon:"fas fa-building", photo: null }
+];
+
+let customCategories = JSON.parse(localStorage.getItem('pe_categories') || '[]');
+let cart = [];
+let currentCat = "all";
+let orders = JSON.parse(localStorage.getItem('pe_orders') || '[]');
+let customers = JSON.parse(localStorage.getItem('pe_customers') || '[]');
+
+// Load saved products (with photos stored as base64)
+let savedProducts = localStorage.getItem('pe_products');
+if (savedProducts) products = JSON.parse(savedProducts);
+
+// Auth state — persists across page reload
+let adminLoggedIn = localStorage.getItem('pe_admin_session') === 'true';
+let currentUser = JSON.parse(localStorage.getItem('pe_current_user') || 'null');
+let registeredUsers = JSON.parse(localStorage.getItem('pe_users') || '[]');
+
+// Photo upload state
+let pendingPhotoBase64 = null;
+
+function saveProducts() { localStorage.setItem('pe_products', JSON.stringify(products)); }
+function fmtPrice(p) { return '₹' + Number(p).toLocaleString('en-IN'); }
+
+// ══════════════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════════════
+function showToast(msg, duration = 2600) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+// ══════════════════════════════════════════════════════
+// HAMBURGER
+// ══════════════════════════════════════════════════════
+document.getElementById('hamburgerBtn').onclick = () => document.getElementById('mobileMenu').classList.toggle('open');
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ══════════════════════════════════════════════════════
+// CATEGORY TABS
+// ══════════════════════════════════════════════════════
+function renderCategoryTabs() {
+  let container = document.getElementById('categoryTabsContainer');
+  let base = [
+    { key:'all', name:'All Products' },
+    { key:'domestic', name:'Domestic RO' },
+    { key:'commercial', name:'Commercial RO' },
+    { key:'spares', name:'Spare Parts' }
+  ];
+  let all = [...base, ...customCategories];
+  container.innerHTML = all.map(c =>
+    `<button class="cat-tab ${c.key === currentCat ? 'active' : ''}" data-cat="${c.key}">${c.name}</button>`
+  ).join('');
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      currentCat = tab.dataset.cat;
+      renderCategoryTabs();
+      renderProducts();
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// PRODUCTS
+// ══════════════════════════════════════════════════════
+function renderProducts() {
+  let grid = document.getElementById('productsGrid');
+  let filtered = currentCat === 'all' ? products : products.filter(p => p.category === currentCat);
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-box-open"></i><p>No products in this category</p></div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <div class="product-img">
+        ${p.photo
+          ? `<img src="${p.photo}" alt="${p.name}">`
+          : `<i class="${p.icon || 'fas fa-cog'}"></i>`}
+      </div>
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="price-row">
+          <span class="price-new">${fmtPrice(p.price)}</span>
+          ${p.oldPrice > p.price ? `<span class="price-old">${fmtPrice(p.oldPrice)}</span>` : ''}
+        </div>
+        <button class="btn-add-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+      </div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', () => addToCart(parseInt(btn.dataset.id)));
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// CART
+// ══════════════════════════════════════════════════════
+function addToCart(id) {
+  let p = products.find(x => x.id === id);
+  if (!p) return;
+  let existing = cart.find(x => x.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...p, qty: 1 });
+  updateCart(); openCart();
+  showToast(`✅ ${p.name} added to cart`);
+}
+
+function changeQty(id, delta) {
+  let item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+  updateCart();
+}
+
+function updateCart() {
+  let totalQty = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartCount').innerText = totalQty;
+  let body = document.getElementById('cartBody');
+  if (cart.length === 0) {
+    body.innerHTML = `<div class="empty-state" style="padding:40px 0;"><i class="fas fa-shopping-cart"></i><p>Your cart is empty</p></div>`;
+    document.getElementById('cartTotal').innerText = '₹0';
+    return;
+  }
+  body.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${fmtPrice(item.price)} × ${item.qty} = ${fmtPrice(item.price * item.qty)}</div>
+      </div>
+      <div class="cart-qty-controls">
+        <button onclick="changeQty(${item.id}, -1)">−</button>
+        <span>${item.qty}</span>
+        <button onclick="changeQty(${item.id}, 1)">+</button>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('cartTotal').innerText = fmtPrice(cart.reduce((s, i) => s + i.price * i.qty, 0));
+}
+
+function openCart() {
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+// ══════════════════════════════════════════════════════
+// WHATSAPP ORDER
+// ══════════════════════════════════════════════════════
+function sendWhatsAppOrder() {
+  if (cart.length === 0) { showToast('⚠️ Cart is empty!'); return; }
+
+  let name, phone;
+  if (currentUser) {
+    name = currentUser.name;
+    phone = currentUser.phone;
+  } else {
+    name = prompt('Aapka naam batayein:');
+    if (!name || !name.trim()) return;
+    phone = prompt('WhatsApp number (with +91):', '+91');
+    if (!phone || !phone.trim()) return;
+  }
+
+  let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  let msg = `*New Order - Pandey Enterprises*%0A%0A*Customer:* ${name.trim()}%0A*Phone:* ${phone.trim()}%0A%0A*Items:*%0A`;
+  cart.forEach(i => { msg += `• ${i.name} × ${i.qty} = ${fmtPrice(i.price * i.qty)}%0A`; });
+  msg += `%0A*Total: ${fmtPrice(total)}*%0A%0AStore: Lalan Complex, Siwan`;
+
+  let order = {
+    id: Date.now(), name: name.trim(), phone: phone.trim(),
+    items: cart.map(i => `${i.name} ×${i.qty}`).join(', '),
+    total, date: new Date().toLocaleString('en-IN'), status: 'Pending'
+  };
+  orders.unshift(order);
+  if (!customers.find(c => c.phone === phone.trim())) {
+    customers.unshift({ name: name.trim(), phone: phone.trim(), address: currentUser?.address || '', date: new Date().toLocaleString('en-IN') });
+  }
+  localStorage.setItem('pe_orders', JSON.stringify(orders));
+  localStorage.setItem('pe_customers', JSON.stringify(customers));
+
+  window.open(`https://wa.me/919006686591?text=${msg}`, '_blank');
+  cart = []; updateCart(); closeCart();
+  showToast('✅ Order sent on WhatsApp!');
+}
+
+// ══════════════════════════════════════════════════════
+// USER AUTH
+// ══════════════════════════════════════════════════════
+function openUserModal() {
+  document.getElementById('userModal').classList.add('open');
+  if (currentUser) showAccountPanel();
+  else showAuthPanel();
+}
+function closeUserModal() { document.getElementById('userModal').classList.remove('open'); }
+
+function showAuthPanel() {
+  document.getElementById('authPanel').style.display = 'block';
+  document.getElementById('accountPanel').style.display = 'none';
+}
+function showAccountPanel() {
+  document.getElementById('authPanel').style.display = 'none';
+  document.getElementById('accountPanel').style.display = 'block';
+  document.getElementById('accountName').textContent = currentUser.name;
+  document.getElementById('accountPhone').textContent = currentUser.phone;
+  document.getElementById('accountAddress').textContent = currentUser.address || '';
+  // Show this user's orders
+  let myOrders = orders.filter(o => o.phone === currentUser.phone);
+  let el = document.getElementById('myOrdersList');
+  if (myOrders.length === 0) {
+    el.innerHTML = '<p style="color:#a0b4c4; font-size:0.82rem; text-align:center; padding: 12px 0;">No orders yet</p>';
+  } else {
+    el.innerHTML = myOrders.slice(0, 5).map(o => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #f0f4f7;">
+        <div>
+          <div style="font-size:0.82rem; font-weight:600;">${o.items.substring(0,40)}${o.items.length>40?'...':''}</div>
+          <div style="font-size:0.75rem; color:#6b8499;">${o.date}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-weight:700; font-size:0.85rem;">${fmtPrice(o.total)}</div>
+          <div style="font-size:0.72rem; color: ${o.status==='Delivered'?'#065f46':o.status==='Cancelled'?'#dc2626':'#856404'};">${o.status}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+function switchAuthTab(tab) {
+  document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+  document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+  document.getElementById('loginForm').style.display = tab === 'login' ? 'block' : 'none';
+  document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+}
+
+function doUserLogin() {
+  let phone = document.getElementById('loginPhone').value.trim();
+  let password = document.getElementById('loginPassword').value.trim();
+  if (!phone || !password) { showToast('⚠️ Phone aur password daalen'); return; }
+  let user = registeredUsers.find(u => u.phone === phone && u.password === password);
+  if (!user) { showToast('❌ Phone ya password galat hai'); return; }
+  currentUser = user;
+  localStorage.setItem('pe_current_user', JSON.stringify(user));
+  updateUserNav();
+  showAccountPanel();
+  showToast(`✅ Welcome back, ${user.name}!`);
+}
+
+function doUserRegister() {
+  let name = document.getElementById('regName').value.trim();
+  let phone = document.getElementById('regPhone').value.trim();
+  let address = document.getElementById('regAddress').value.trim();
+  let password = document.getElementById('regPassword').value.trim();
+  if (!name || !phone || !password) { showToast('⚠️ Naam, phone aur password zaroori hai'); return; }
+  if (password.length < 4) { showToast('⚠️ Password kam se kam 4 character ka hona chahiye'); return; }
+  if (registeredUsers.find(u => u.phone === phone)) { showToast('⚠️ Is phone number se account pehle se hai'); return; }
+  let user = { name, phone, address, password, joined: new Date().toLocaleString('en-IN') };
+  registeredUsers.push(user);
+  localStorage.setItem('pe_users', JSON.stringify(registeredUsers));
+  // Also add to customers
+  if (!customers.find(c => c.phone === phone)) {
+    customers.unshift({ name, phone, address, date: user.joined });
+    localStorage.setItem('pe_customers', JSON.stringify(customers));
+  }
+  currentUser = user;
+  localStorage.setItem('pe_current_user', JSON.stringify(user));
+  updateUserNav();
+  showAccountPanel();
+  showToast(`✅ Account bana diya, ${name}! Welcome!`);
+}
+
+function doUserLogout() {
+  currentUser = null;
+  localStorage.removeItem('pe_current_user');
+  updateUserNav();
+  closeUserModal();
+  showToast('👋 Logout ho gaye');
+}
+
+function updateUserNav() {
+  let btn = document.getElementById('userNavBtn');
+  let label = document.getElementById('userNavLabel');
+  if (currentUser) {
+    btn.classList.add('user-logged');
+    label.textContent = currentUser.name.split(' ')[0];
+  } else {
+    btn.classList.remove('user-logged');
+    label.textContent = 'Login';
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// ADMIN AUTH
+// ══════════════════════════════════════════════════════
+function openAdminPanel() {
+  document.getElementById('adminOverlay').classList.add('open');
+  if (adminLoggedIn) {
+    showAdminDash();
+  } else {
+    document.getElementById('adminLoginPanel').style.display = 'block';
+    document.getElementById('adminDash').style.display = 'none';
+    document.getElementById('adminLogoutBtn').style.display = 'none';
+  }
+}
+
+document.getElementById('adminCloseBtn').onclick = () => document.getElementById('adminOverlay').classList.remove('open');
+
+document.getElementById('adminSubmitBtn').onclick = doAdminLogin;
+document.getElementById('adminPwd').addEventListener('keydown', e => { if (e.key === 'Enter') doAdminLogin(); });
+document.getElementById('adminUser').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('adminPwd').focus(); });
+
+function doAdminLogin() {
+  let user = document.getElementById('adminUser').value.trim();
+  let pwd = document.getElementById('adminPwd').value;
+  if (user === ADMIN_CREDENTIALS.username && pwd === ADMIN_CREDENTIALS.password) {
+    adminLoggedIn = true;
+    localStorage.setItem('pe_admin_session', 'true');
+    showAdminDash();
+    document.getElementById('adminNavBtn').classList.add('admin-logged');
+    showToast('✅ Admin login successful');
+  } else {
+    showToast('❌ Wrong username or password');
+    document.getElementById('adminPwd').value = '';
+    document.getElementById('adminPwd').focus();
+  }
+}
+
+function doAdminLogout() {
+  if (!confirm('Admin logout karna chahte hain?')) return;
+  adminLoggedIn = false;
+  localStorage.removeItem('pe_admin_session');
+  document.getElementById('adminDash').style.display = 'none';
+  document.getElementById('adminLoginPanel').style.display = 'block';
+  document.getElementById('adminLogoutBtn').style.display = 'none';
+  document.getElementById('adminNavBtn').classList.remove('admin-logged');
+  document.getElementById('adminUser').value = '';
+  document.getElementById('adminPwd').value = '';
+  showToast('👋 Admin logout ho gaye');
+}
+
+function showAdminDash() {
+  document.getElementById('adminLoginPanel').style.display = 'none';
+  document.getElementById('adminDash').style.display = 'block';
+  document.getElementById('adminLogoutBtn').style.display = 'inline-block';
+  document.getElementById('adminNavBtn').classList.add('admin-logged');
+  loadAdminOrders();
+  loadAdminProducts();
+  loadAdminCustomers();
+  loadCategoriesList();
+}
+
+// Admin tab switching
+document.querySelectorAll('.a-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.a-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    let panel = tab.dataset.panel;
+    ['panelOrders','panelProducts','panelAddProduct','panelAddCategory','panelCustomers'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    let map = { orders:'panelOrders', products:'panelProducts', addproduct:'panelAddProduct', addcategory:'panelAddCategory', customers:'panelCustomers' };
+    if (map[panel]) document.getElementById(map[panel]).style.display = 'block';
+  });
+});
+
+// ── ORDERS TABLE ──
+function loadAdminOrders() {
+  let tbody = document.getElementById('ordersTableBody');
+  if (orders.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#a0b4c4; padding:30px;">No orders yet</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = orders.map((o, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><strong>${o.name}</strong></td>
+      <td><a href="https://wa.me/${o.phone.replace(/\D/g,'')}" target="_blank" style="color:#0e7e8c;">${o.phone}</a></td>
+      <td style="max-width:160px; font-size:0.75rem;">${o.items}</td>
+      <td><strong>${fmtPrice(o.total)}</strong></td>
+      <td style="font-size:0.72rem;">${o.date}</td>
+      <td>
+        <select class="status-select" onchange="updateOrderStatus(${o.id}, this.value)">
+          <option ${o.status==='Pending'?'selected':''}>Pending</option>
+          <option ${o.status==='Confirmed'?'selected':''}>Confirmed</option>
+          <option ${o.status==='Delivered'?'selected':''}>Delivered</option>
+          <option ${o.status==='Cancelled'?'selected':''}>Cancelled</option>
+        </select>
+      </td>
+      <td><button class="btn-danger" onclick="deleteOrder(${o.id})"><i class="fas fa-trash"></i></button></td>
+    </tr>
+  `).join('');
+}
+
+function updateOrderStatus(id, status) {
+  let o = orders.find(x => x.id === id);
+  if (o) { o.status = status; localStorage.setItem('pe_orders', JSON.stringify(orders)); showToast(`✅ Status: ${status}`); }
+}
+function deleteOrder(id) {
+  if (!confirm('Delete this order?')) return;
+  orders = orders.filter(x => x.id !== id);
+  localStorage.setItem('pe_orders', JSON.stringify(orders));
+  loadAdminOrders(); showToast('🗑️ Order deleted');
+}
+
+// ── PRODUCTS TABLE ──
+function loadAdminProducts() {
+  let tbody = document.getElementById('productsTableBody');
+  if (products.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#a0b4c4; padding:30px;">No products</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = products.map((p, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td>
+        ${p.photo
+          ? `<img src="${p.photo}" class="product-thumb" alt="${p.name}">`
+          : `<i class="${p.icon}" style="color:#0e7e8c; font-size:1.4rem;"></i>`}
+      </td>
+      <td>${p.name}</td>
+      <td style="text-transform:capitalize;">${p.category}</td>
+      <td><strong>${fmtPrice(p.price)}</strong></td>
+      <td style="text-decoration:line-through; color:#b0c4d0;">${fmtPrice(p.oldPrice)}</td>
+      <td><button class="btn-danger" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Del</button></td>
+    </tr>
+  `).join('');
+}
+
+function deleteProduct(id) {
+  if (!confirm('Delete this product?')) return;
+  products = products.filter(x => x.id !== id);
+  saveProducts(); renderProducts(); loadAdminProducts();
+  showToast('🗑️ Product deleted');
+}
+
+// ── CUSTOMERS TABLE ──
+function loadAdminCustomers() {
+  let tbody = document.getElementById('customersTableBody');
+  if (customers.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#a0b4c4; padding:30px;">No customers yet</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = customers.map((c, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><strong>${c.name}</strong></td>
+      <td>${c.phone}</td>
+      <td>${c.address || '—'}</td>
+      <td style="font-size:0.75rem;">${c.date}</td>
+      <td><a href="https://wa.me/${c.phone.replace(/\D/g,'')}" target="_blank" class="btn-success"><i class="fab fa-whatsapp"></i> Chat</a></td>
+    </tr>
+  `).join('');
+}
+
+// ── CATEGORIES ──
+function loadCategoriesList() {
+  let el = document.getElementById('categoriesList');
+  if (customCategories.length === 0) {
+    el.innerHTML = '<p style="color:#a0b4c4; font-size:0.85rem; margin-top:8px;">No custom categories added yet.</p>';
+    return;
+  }
+  el.innerHTML = `<h4 style="margin:16px 0 10px;">Existing Custom Categories</h4>` +
+    customCategories.map((c, i) => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #f0f4f7;">
+        <span>${c.name} <code style="font-size:0.75rem; color:#a0b4c4;">(${c.key})</code></span>
+        <button class="btn-danger" onclick="deleteCategory(${i})"><i class="fas fa-trash"></i></button>
+      </div>
+    `).join('');
+}
+
+function deleteCategory(index) {
+  customCategories.splice(index, 1);
+  localStorage.setItem('pe_categories', JSON.stringify(customCategories));
+  renderCategoryTabs(); loadCategoriesList();
+  showToast('🗑️ Category deleted');
+}
+
+document.getElementById('saveCategoryBtn').onclick = () => {
+  let catName = document.getElementById('newCategoryName').value.trim();
+  let catKey = document.getElementById('newCategoryKey').value.trim().replace(/\s+/g, '-').toLowerCase();
+  if (!catName || !catKey) { showToast('⚠️ Dono fields fill karein'); return; }
+  if (customCategories.find(c => c.key === catKey)) { showToast('⚠️ Category key already exists'); return; }
+  customCategories.push({ name: catName, key: catKey });
+  localStorage.setItem('pe_categories', JSON.stringify(customCategories));
+  let sel = document.getElementById('newProductCategory');
+  let opt = document.createElement('option'); opt.value = catKey; opt.textContent = catName; sel.appendChild(opt);
+  renderCategoryTabs(); loadCategoriesList();
+  document.getElementById('newCategoryName').value = '';
+  document.getElementById('newCategoryKey').value = '';
+  showToast('✅ Category added!');
+};
+
+// ══════════════════════════════════════════════════════
+// PHOTO UPLOAD (real gallery, auto-compressed)
+// ══════════════════════════════════════════════════════
+function handlePhotoUpload(event) {
+  let file = event.target.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) { showToast('⚠️ Image file select karein'); return; }
+
+  let reader = new FileReader();
+  reader.onload = function(e) {
+    let img = new Image();
+    img.onload = function() {
+      // Compress to max 800px wide, quality 0.75
+      let canvas = document.createElement('canvas');
+      let maxW = 800;
+      let scale = img.width > maxW ? maxW / img.width : 1;
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      let ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      pendingPhotoBase64 = canvas.toDataURL('image/jpeg', 0.75);
+
+      // Show preview
+      let preview = document.getElementById('photoPreview');
+      preview.src = pendingPhotoBase64;
+      preview.style.display = 'block';
+      document.getElementById('photoUploadArea').style.display = 'none';
+      document.getElementById('photoRemoveBtn').style.display = 'inline-block';
+      showToast('📷 Photo ready! (' + Math.round(pendingPhotoBase64.length / 1024) + ' KB)');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  // Reset input so same file can be re-selected
+  event.target.value = '';
+}
+
+function removePhoto() {
+  pendingPhotoBase64 = null;
+  document.getElementById('photoPreview').style.display = 'none';
+  document.getElementById('photoPreview').src = '';
+  document.getElementById('photoUploadArea').style.display = 'block';
+  document.getElementById('photoRemoveBtn').style.display = 'none';
+}
+
+// ── SAVE PRODUCT ──
+document.getElementById('saveProductBtn').onclick = () => {
+  let name = document.getElementById('newProductName').value.trim();
+  let price = parseFloat(document.getElementById('newProductPrice').value);
+  if (!name || !price) { showToast('⚠️ Naam aur price zaroori hai'); return; }
+  let newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+  products.push({
+    id: newId, name,
+    desc: document.getElementById('newProductDesc').value.trim() || 'Quality product',
+    price,
+    oldPrice: parseFloat(document.getElementById('newProductOldPrice').value) || Math.round(price * 1.25),
+    category: document.getElementById('newProductCategory').value,
+    icon: document.getElementById('newProductIcon').value.trim() || 'fas fa-cog',
+    photo: pendingPhotoBase64 || null
+  });
+  saveProducts(); renderProducts(); loadAdminProducts();
+  // Reset form
+  ['newProductName','newProductDesc','newProductPrice','newProductOldPrice'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('newProductIcon').value = 'fas fa-cog';
+  removePhoto();
+  showToast('✅ Product added with photo!');
+};
+
+// ══════════════════════════════════════════════════════
+// EVENT LISTENERS
+// ══════════════════════════════════════════════════════
+document.getElementById('cartOpenBtn').onclick = openCart;
+document.getElementById('cartCloseBtn').onclick = closeCart;
+document.getElementById('overlay').onclick = closeCart;
+document.getElementById('waOrderBtn').onclick = sendWhatsAppOrder;
+document.getElementById('commercialEnqBtn').onclick = () =>
+  window.open('https://wa.me/919006686591?text=Commercial%20RO%20enquiry%20-%20Please%20send%20quote', '_blank');
+
+// Close user modal on outside click
+document.getElementById('userModal').addEventListener('click', function(e) {
+  if (e.target === this) closeUserModal();
+});
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+updateUserNav();
+if (adminLoggedIn) {
+  document.getElementById('adminNavBtn').classList.add('admin-logged');
+}
+renderCategoryTabs();
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>
