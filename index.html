@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pandey Enterprises | RO Systems & Spare Parts</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
   <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: #f4f8fb; color: #0d2137; line-height: 1.6; }
 
@@ -77,8 +79,9 @@
       height: 64px; position: sticky; top: 0; z-index: 200;
       box-shadow: 0 1px 0 #e0eaf0;
     }
-    .logo h1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #0d2137; }
-    .logo p { font-size: 0.65rem; color: #0e7e8c; }
+    .logo { flex-shrink: 0; min-width: 0; }
+    .logo h1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #0d2137; white-space: nowrap; }
+    .logo p { font-size: 0.65rem; color: #0e7e8c; white-space: nowrap; }
     .nav-links { display: flex; gap: 28px; }
     .nav-links a { text-decoration: none; color: #6b8499; font-weight: 500; font-size: 0.9rem; }
     .nav-right { display: flex; align-items: center; gap: 8px; }
@@ -119,6 +122,13 @@
     .hero p { color: #8aafc8; margin: 16px 0 24px; font-size: 0.95rem; }
     .hero-icon { text-align: center; }
     .hero-icon i { font-size: 7rem; color: #0e7e8c; opacity: 0.85; }
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; padding: 40px 5% 44px; gap: 0; text-align: center; }
+      .hero h2 { font-size: 1.85rem; }
+      .hero p { font-size: 0.9rem; margin: 12px 0 20px; }
+      .hero-icon { display: none; }
+      .btn-primary { width: 100%; justify-content: center; padding: 14px; font-size: 1rem; }
+    }
     .btn-primary {
       background: #e8841a; color: white; padding: 12px 22px; border-radius: 10px;
       text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
@@ -361,13 +371,19 @@
     @media (max-width: 700px) {
       .top-bar { font-size: 0.7rem; padding: 6px 4%; }
       .top-bar .loc-info { display: none; }
-      nav { padding: 0 4%; }
+      nav { padding: 0 3%; height: 60px; }
+      .logo h1 { font-size: 1rem; }
+      .logo p { font-size: 0.6rem; }
       .nav-links { display: none; }
       .hamburger { display: block; }
+      .btn-nav { padding: 6px 8px; }
       .btn-nav span { display: none; }
       .btn-nav i { margin: 0; }
-      .hero { grid-template-columns: 1fr; padding: 36px 4%; gap: 20px; text-align: center; }
-      .hero h2 { font-size: 1.7rem; }
+      .nav-right { gap: 5px; }
+      .cart-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+      .hero { padding: 36px 4% 40px; }
+      .hero h2 { font-size: 1.85rem; }
+      .hero p { font-size: 0.9rem; }
       .hero-icon { display: none; }
       .cat-tabs { padding: 16px 4% 10px; gap: 6px; }
       .cat-tab { padding: 6px 12px; font-size: 0.78rem; }
@@ -387,7 +403,7 @@
 
 <!-- TOP BAR -->
 <div class="top-bar">
-  <span><i class="fas fa-tint"></i> RO Specialist · Domestic &amp; Commercial</span>
+  <span>💧 RO Specialist · Domestic &amp; Commercial</span>
   <span>
     <span class="pureit-badge">
       <span class="badge-icon"><i class="fas fa-check"></i></span>
@@ -605,7 +621,7 @@
         <button class="btn-full btn-primary-full" id="adminSubmitBtn">
           <i class="fas fa-sign-in-alt"></i> Login to Admin
         </button>
-        <p style="font-size:0.75rem; color:#a0b4c4; margin-top: 10px;">Default: admin / admin123</p>
+
       </div>
 
       <!-- ADMIN DASHBOARD -->
@@ -632,12 +648,7 @@
         <!-- PRODUCTS -->
         <div id="panelProducts" style="display:none;">
           <h4 style="margin-bottom:14px;">All Products</h4>
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead><tr><th>#</th><th>Photo</th><th>Name</th><th>Category</th><th>Price</th><th>Old Price</th><th>Action</th></tr></thead>
-              <tbody id="productsTableBody"></tbody>
-            </table>
-          </div>
+          <div id="productsTableBody"></div>
         </div>
 
         <!-- ADD PRODUCT -->
@@ -1122,26 +1133,66 @@ function deleteOrder(id) {
 
 // ── PRODUCTS TABLE ──
 function loadAdminProducts() {
-  let tbody = document.getElementById('productsTableBody');
+  let container = document.getElementById('productsTableBody');
   if (products.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:#a0b4c4; padding:30px;">No products</td></tr>`;
+    container.innerHTML = `<div style="text-align:center; color:#a0b4c4; padding:30px;"><i class="fas fa-box-open" style="font-size:2rem; display:block; margin-bottom:10px;"></i>No products yet</div>`;
     return;
   }
-  tbody.innerHTML = products.map((p, i) => `
-    <tr>
-      <td>${i + 1}</td>
-      <td>
+  container.innerHTML = products.map((p, i) => `
+    <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f0f4f7; flex-wrap:wrap;">
+      <!-- Photo -->
+      <div style="flex-shrink:0; width:64px; height:64px; border-radius:10px; overflow:hidden; background:#e8f5f7; display:flex; align-items:center; justify-content:center; border:1px solid #e0eaf0;">
         ${p.photo
-          ? `<img src="${p.photo}" class="product-thumb" alt="${p.name}">`
-          : `<i class="${p.icon}" style="color:#0e7e8c; font-size:1.4rem;"></i>`}
-      </td>
-      <td>${p.name}</td>
-      <td style="text-transform:capitalize;">${p.category}</td>
-      <td><strong>${fmtPrice(p.price)}</strong></td>
-      <td style="text-decoration:line-through; color:#b0c4d0;">${fmtPrice(p.oldPrice)}</td>
-      <td><button class="btn-danger" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Del</button></td>
-    </tr>
+          ? `<img src="${p.photo}" style="width:100%; height:100%; object-fit:cover;" alt="${p.name}">`
+          : `<i class="${p.icon}" style="color:#0e7e8c; font-size:1.8rem;"></i>`}
+      </div>
+      <!-- Info -->
+      <div style="flex:1; min-width:120px;">
+        <div style="font-weight:700; font-size:0.9rem; color:#0d2137;">${p.name}</div>
+        <div style="font-size:0.75rem; color:#6b8499; text-transform:capitalize; margin:2px 0;">${p.category}</div>
+        <div style="font-size:0.85rem;"><strong style="color:#0d2137;">${fmtPrice(p.price)}</strong> <span style="text-decoration:line-through; color:#b0c4d0; font-size:0.75rem;">${fmtPrice(p.oldPrice)}</span></div>
+      </div>
+      <!-- Actions -->
+      <div style="display:flex; flex-direction:column; gap:6px; flex-shrink:0;">
+        <label style="cursor:pointer; display:inline-block;">
+          <input type="file" accept="image/*" style="display:none;" onchange="changeProductPhoto(event,${p.id})">
+          <span class="btn-success" style="padding:6px 12px; font-size:0.78rem; display:inline-flex; align-items:center; gap:4px; border-radius:7px;">
+            <i class="fas fa-camera"></i> ${p.photo ? 'Change Photo' : 'Upload Photo'}
+          </span>
+        </label>
+        <button class="btn-danger" onclick="deleteProduct(${p.id})" style="padding:6px 12px; font-size:0.78rem; display:inline-flex; align-items:center; gap:4px; border-radius:7px; width:100%; justify-content:center;">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+      </div>
+    </div>
   `).join('');
+}
+
+function changeProductPhoto(event, productId) {
+  let file = event.target.files[0];
+  if (!file || !file.type.startsWith('image/')) { showToast('⚠️ Image file select karein'); return; }
+  let reader = new FileReader();
+  reader.onload = function(e) {
+    let img = new Image();
+    img.onload = function() {
+      let canvas = document.createElement('canvas');
+      let maxW = 800;
+      let scale = img.width > maxW ? maxW / img.width : 1;
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      let base64 = canvas.toDataURL('image/jpeg', 0.75);
+      let prod = products.find(p => p.id === productId);
+      if (prod) {
+        prod.photo = base64;
+        saveProducts(); renderProducts(); loadAdminProducts();
+        showToast('✅ Photo updated!');
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  event.target.value = '';
 }
 
 function deleteProduct(id) {
