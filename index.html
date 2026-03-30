@@ -824,9 +824,10 @@ function renderProducts() {
 // CART
 // ══════════════════════════════════════════════════════
 function addToCart(id) {
-  let p = products.find(x => x.id === id);
+  id = parseInt(id);
+  let p = products.find(x => parseInt(x.id) === id);
   if (!p) return;
-  let existing = cart.find(x => x.id === id);
+  let existing = cart.find(x => parseInt(x.id) === id);
   if (existing) existing.qty++;
   else cart.push({ ...p, qty: 1 });
   updateCart(); openCart();
@@ -834,10 +835,11 @@ function addToCart(id) {
 }
 
 function changeQty(id, delta) {
-  let item = cart.find(x => x.id === id);
+  id = parseInt(id);
+  let item = cart.find(x => parseInt(x.id) === id);
   if (!item) return;
   item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+  if (item.qty <= 0) cart = cart.filter(x => parseInt(x.id) !== id);
   updateCart();
 }
 
@@ -1121,12 +1123,14 @@ function loadAdminOrders() {
 }
 
 function updateOrderStatus(id, status) {
-  let o = orders.find(x => x.id === id);
+  id = parseInt(id);
+  let o = orders.find(x => parseInt(x.id) === id);
   if (o) { o.status = status; localStorage.setItem('pe_orders', JSON.stringify(orders)); showToast(`✅ Status: ${status}`); }
 }
 function deleteOrder(id) {
+  id = parseInt(id);
   if (!confirm('Delete this order?')) return;
-  orders = orders.filter(x => x.id !== id);
+  orders = orders.filter(x => parseInt(x.id) !== id);
   localStorage.setItem('pe_orders', JSON.stringify(orders));
   loadAdminOrders(); showToast('🗑️ Order deleted');
 }
@@ -1182,7 +1186,7 @@ function changeProductPhoto(event, productId) {
       canvas.height = Math.round(img.height * scale);
       canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
       let base64 = canvas.toDataURL('image/jpeg', 0.75);
-      let prod = products.find(p => p.id === productId);
+      let prod = products.find(p => parseInt(p.id) === parseInt(productId));
       if (prod) {
         prod.photo = base64;
         saveProducts(); renderProducts(); loadAdminProducts();
@@ -1196,8 +1200,9 @@ function changeProductPhoto(event, productId) {
 }
 
 function deleteProduct(id) {
+  id = parseInt(id);
   if (!confirm('Delete this product?')) return;
-  products = products.filter(x => x.id !== id);
+  products = products.filter(x => parseInt(x.id) !== id);
   saveProducts(); renderProducts(); loadAdminProducts();
   showToast('🗑️ Product deleted');
 }
