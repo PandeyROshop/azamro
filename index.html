@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pandey Enterprises | RO Systems & Spare Parts</title>
+  <title>Pandey Enterprises | RO Systems &amp; Spare Parts</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
   <style>
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: #f4f8fb; color: #0d2137; line-height: 1.6; }
 
@@ -19,8 +17,6 @@
       justify-content: space-between; flex-wrap: wrap; gap: 4px; font-size: 0.75rem;
     }
     .top-bar span { display: flex; align-items: center; gap: 6px; }
-
-    /* Pureit Badge */
     .pureit-badge {
       display: inline-flex; align-items: center; gap: 5px;
       background: linear-gradient(135deg, #1a4fa0 0%, #1565c0 100%);
@@ -48,11 +44,7 @@
       transition: transform 0.2s, box-shadow 0.2s;
       animation: waPulse 2.5s ease-in-out infinite;
     }
-    .wa-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 28px rgba(37,211,102,0.6), 0 4px 12px rgba(0,0,0,0.2);
-      animation: none;
-    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6), 0 4px 12px rgba(0,0,0,0.2); animation: none; }
     .wa-float-tooltip {
       position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
       background: #0d2137; color: white; padding: 6px 12px; border-radius: 8px;
@@ -67,9 +59,6 @@
     @keyframes waPulse {
       0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4); }
       50% { box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 0 0 10px rgba(37,211,102,0); }
-    }
-    @media (max-width: 700px) {
-      .wa-float { bottom: 18px; right: 16px; width: 52px; height: 52px; font-size: 1.5rem; }
     }
 
     /* ── NAV ── */
@@ -122,13 +111,6 @@
     .hero p { color: #8aafc8; margin: 16px 0 24px; font-size: 0.95rem; }
     .hero-icon { text-align: center; }
     .hero-icon i { font-size: 7rem; color: #0e7e8c; opacity: 0.85; }
-    @media (max-width: 700px) {
-      .hero { grid-template-columns: 1fr; padding: 40px 5% 44px; gap: 0; text-align: center; }
-      .hero h2 { font-size: 1.85rem; }
-      .hero p { font-size: 0.9rem; margin: 12px 0 20px; }
-      .hero-icon { display: none; }
-      .btn-primary { width: 100%; justify-content: center; padding: 14px; font-size: 1rem; }
-    }
     .btn-primary {
       background: #e8841a; color: white; padding: 12px 22px; border-radius: 10px;
       text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
@@ -145,13 +127,14 @@
     .cat-tab:hover { border-color: #0d2137; color: #0d2137; }
     .cat-tab.active { background: #0d2137; color: white; border-color: #0d2137; }
 
-    /* ── PRODUCTS GRID ── */
+    /* ── PRODUCT GRID & CARDS ── */
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; padding: 12px 5% 50px; }
     .product-card {
       background: white; border-radius: 14px; overflow: hidden;
-      border: 1px solid #e0eaf0; transition: box-shadow 0.2s, transform 0.2s;
+      border: 1px solid #e0eaf0; transition: box-shadow 0.2s, transform 0.2s; position: relative;
     }
     .product-card:hover { box-shadow: 0 8px 24px rgba(13,33,55,0.1); transform: translateY(-2px); }
+    .product-badge { position: absolute; top: 10px; left: 10px; background: #e8841a; color: white; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; z-index: 2; }
     .product-img {
       background: #e8f5f7; height: 160px;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -164,6 +147,10 @@
     .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
     .price-new { font-size: 1.2rem; font-weight: 700; color: #0d2137; }
     .price-old { text-decoration: line-through; color: #b0c4d0; font-size: 0.78rem; }
+    .product-rating { color: #e8841a; font-size: 0.75rem; margin-bottom: 4px; }
+    .product-highlights { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 8px; }
+    .highlight-tag { background: #e8f5f7; color: #0e7e8c; padding: 2px 7px; border-radius: 20px; font-size: 0.62rem; font-weight: 600; }
+    .courier-note { font-size: 0.68rem; color: #e8841a; margin-bottom: 3px; }
     .btn-add-cart {
       width: 100%; background: #0d2137; color: white; border: none;
       padding: 10px; border-radius: 8px; cursor: pointer;
@@ -171,8 +158,9 @@
       display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.2s;
     }
     .btn-add-cart:hover { background: #0e7e8c; }
+    .btn-add-cart:disabled { background: #b0c4d0; cursor: not-allowed; }
 
-    /* ── COMMERCIAL ── */
+    /* ── COMMERCIAL BANNER ── */
     .commercial {
       background: linear-gradient(135deg, #0d2137 0%, #163352 100%);
       margin: 0 5% 50px; border-radius: 20px; padding: 36px;
@@ -247,7 +235,6 @@
     }
     .modal-tab.active { color: #0d2137; font-weight: 600; border-bottom-color: #0e7e8c; }
 
-    /* Form fields shared */
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: #6b8499; margin-bottom: 5px; }
     .form-group input, .form-group select, .form-group textarea {
@@ -284,10 +271,10 @@
     .admin-box { background: white; max-width: 1100px; margin: 0 auto; border-radius: 20px; overflow: hidden; }
     .admin-bar {
       background: #0d2137; color: white; padding: 16px 20px;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
     }
     .admin-bar h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
-    .admin-bar-right { display: flex; align-items: center; gap: 12px; }
+    .admin-bar-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .admin-logout-btn {
       background: #dc2626; color: white; border: none; padding: 7px 14px;
       border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
@@ -295,7 +282,12 @@
     .admin-close { background: none; border: none; color: white; font-size: 1.1rem; cursor: pointer; opacity: 0.7; }
     .admin-inner { padding: 20px; }
 
-    /* Admin login form */
+    /* Admin Stats */
+    .admin-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .stat-card { background: linear-gradient(135deg, #e8f5f7, #d0eef3); padding: 0.5rem 1rem; border-radius: 12px; text-align: center; min-width: 70px; }
+    .stat-number { font-size: 1.2rem; font-weight: 700; color: #0e7e8c; }
+
+    /* Admin Login Panel */
     #adminLoginPanel { max-width: 340px; margin: 0 auto; text-align: center; padding: 30px 0; }
     #adminLoginPanel h3 { margin-bottom: 6px; font-family: 'Playfair Display', serif; }
     #adminLoginPanel p { color: #6b8499; font-size: 0.85rem; margin-bottom: 20px; }
@@ -311,6 +303,11 @@
       font-size: 0.82rem; color: #6b8499; transition: all 0.2s;
     }
     .a-tab.active, .a-tab:hover { background: #0d2137; color: white; border-color: #0d2137; }
+    .brcm-tab-special { background: linear-gradient(135deg, #1a4a2a, #25D366) !important; color: white !important; border-color: #25D366 !important; }
+
+    /* Tab Panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
     /* Add Form */
     .add-form { background: #f8fafb; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
@@ -326,36 +323,34 @@
       border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
     }
 
-    /* Photo Upload */
-    .photo-upload-area {
-      border: 2px dashed #b0c4d0; border-radius: 10px; padding: 20px;
-      text-align: center; cursor: pointer; transition: all 0.2s; margin-bottom: 10px; background: white;
-    }
-    .photo-upload-area:hover { border-color: #0e7e8c; background: #f0f9fb; }
-    .photo-upload-area i { font-size: 2rem; color: #b0c4d0; display: block; margin-bottom: 6px; }
-    .photo-upload-area p { font-size: 0.82rem; color: #6b8499; }
-    .photo-preview {
-      width: 100%; height: 140px; object-fit: cover;
-      border-radius: 8px; display: none; margin-bottom: 10px;
-    }
-    #photoInput { display: none; }
-    .photo-remove-btn {
-      background: #fee2e2; color: #dc2626; border: none; padding: 5px 12px;
-      border-radius: 6px; cursor: pointer; font-size: 0.78rem; display: none; margin-bottom: 10px;
-    }
-
-    /* Data Table */
+    /* Admin Table */
     .data-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     .data-table th { background: #f0f4f7; padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 2px solid #e0eaf0; }
     .data-table td { padding: 9px 8px; border-bottom: 1px solid #f0f4f7; vertical-align: middle; }
     .data-table tr:hover td { background: #fafcfd; }
-    .product-thumb { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; vertical-align: middle; }
-    .status-select { border: 1px solid #e0eaf0; border-radius: 6px; padding: 3px 6px; font-size: 0.75rem; font-family: 'DM Sans', sans-serif; }
-    .btn-danger { background: #fee2e2; color: #dc2626; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; }
-    .btn-success { background: #d1fae5; color: #065f46; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-decoration: none; display: inline-block; }
     .table-responsive { overflow-x: auto; }
-    .empty-state { text-align: center; padding: 40px; color: #a0b4c4; }
-    .empty-state i { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+
+    /* Admin product table */
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 0.7rem; min-width: 700px; }
+    .admin-table th, .admin-table td { padding: 0.6rem 0.5rem; text-align: left; border-bottom: 1px solid #eee; vertical-align: middle; }
+    .admin-table th { background: #f0f4f7; font-weight: 600; }
+    .admin-input { padding: 0.4rem; font-size: 0.7rem; width: 100%; border: 1px solid #ddd; border-radius: 6px; }
+    .admin-input-desc { width: 100%; min-width: 150px; }
+    textarea.admin-input { padding: 0.4rem; font-size: 0.7rem; width: 100%; border: 1px solid #ddd; border-radius: 6px; resize: vertical; font-family: inherit; line-height: 1.4; }
+    .stock-switch { width: 35px; height: 18px; background: #ccc; border-radius: 18px; position: relative; cursor: pointer; display: inline-block; }
+    .stock-switch.active { background: #0e7e8c; }
+    .stock-switch::after { content: ''; width: 14px; height: 14px; background: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: 0.2s; }
+    .stock-switch.active::after { left: 19px; }
+    .delete-btn { background: #fee2e2; color: #dc2626; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; }
+    .btn-success { background: #d1fae5; color: #065f46; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; text-decoration: none; display: inline-block; }
+    .btn-danger { background: #fee2e2; color: #dc2626; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; }
+    .save-btn { background: #0d2137; color: white; border: none; padding: 0.5rem 1rem; border-radius: 10px; cursor: pointer; font-weight: 600; margin-top: 0.5rem; font-family: 'DM Sans', sans-serif; }
+
+    /* BRCM Broadcast */
+    .brcm-contact { display:flex; align-items:center; gap:0.5rem; padding:0.5rem 0.7rem; border-radius:10px; border:1px solid #e0eaf0; margin-bottom:0.4rem; background:#fafcfd; }
+    .brcm-contact input[type=checkbox] { width:16px; height:16px; cursor:pointer; accent-color:#0d2137; }
+    .brcm-contact label { font-size:0.8rem; flex:1; cursor:pointer; }
+    .brcm-contact .brcm-phone { font-size:0.7rem; color:#0e7e8c; font-weight:600; white-space:nowrap; }
 
     /* Toast */
     .toast {
@@ -367,41 +362,38 @@
     }
     .toast.show { transform: translateX(-50%) translateY(0); }
 
+    .empty-state { text-align: center; padding: 40px; color: #a0b4c4; }
+    .empty-state i { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+
     /* ── MOBILE ── */
     @media (max-width: 700px) {
-      .top-bar { font-size: 0.7rem; padding: 6px 4%; }
       .top-bar .loc-info { display: none; }
       nav { padding: 0 3%; height: 60px; }
       .logo h1 { font-size: 1rem; }
-      .logo p { font-size: 0.6rem; }
       .nav-links { display: none; }
       .hamburger { display: block; }
-      .btn-nav { padding: 6px 8px; }
       .btn-nav span { display: none; }
       .btn-nav i { margin: 0; }
       .nav-right { gap: 5px; }
-      .cart-btn { width: 38px; height: 38px; font-size: 0.9rem; }
-      .hero { padding: 36px 4% 40px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 5% 44px; gap: 0; text-align: center; }
       .hero h2 { font-size: 1.85rem; }
-      .hero p { font-size: 0.9rem; }
       .hero-icon { display: none; }
       .cat-tabs { padding: 16px 4% 10px; gap: 6px; }
       .cat-tab { padding: 6px 12px; font-size: 0.78rem; }
       .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; padding: 8px 4% 40px; }
       .product-img { height: 120px; }
       .commercial { flex-direction: column; margin: 0 4% 40px; padding: 24px; text-align: center; }
-      .commercial i { font-size: 3rem !important; }
       .admin-overlay { padding: 0; }
       .admin-box { border-radius: 0; min-height: 100vh; }
       .add-form-row { grid-template-columns: 1fr; }
       .cart-sidebar { width: 100%; right: -100%; }
-      .modal-box { max-width: 100%; border-radius: 16px; }
+      .modal-box { max-width: 100%; }
     }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP BAR — Pandey Enterprises unchanged -->
 <div class="top-bar">
   <span>💧 RO Specialist · Domestic &amp; Commercial</span>
   <span>
@@ -414,7 +406,7 @@
   <span class="loc-info"><i class="fas fa-map-marker-alt"></i> Lalan Complex, Siwan, Bihar</span>
 </div>
 
-<!-- NAV -->
+<!-- NAV — Pandey Enterprises unchanged -->
 <nav>
   <div class="logo">
     <h1>Pandey Enterprises</h1>
@@ -428,11 +420,9 @@
   </div>
   <div class="nav-right">
     <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
-    <!-- USER BTN — changes on login -->
     <button class="btn-nav" id="userNavBtn" onclick="openUserModal()">
       <i class="fas fa-user"></i> <span id="userNavLabel">Login</span>
     </button>
-    <!-- ADMIN BTN -->
     <button class="btn-nav" id="adminNavBtn" onclick="openAdminPanel()">
       <i class="fas fa-user-shield"></i> <span>Admin</span>
     </button>
@@ -443,7 +433,7 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- MOBILE MENU — Pandey Enterprises unchanged -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#" onclick="closeMobileMenu()">Home</a>
   <a href="#products" onclick="closeMobileMenu()">Products</a>
@@ -451,7 +441,7 @@
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
-<!-- HERO -->
+<!-- HERO — Pandey Enterprises unchanged -->
 <section class="hero">
   <div>
     <h2>Pure Water Solutions<br>for <em>Every Need</em></h2>
@@ -461,12 +451,12 @@
   <div class="hero-icon"><i class="fas fa-water"></i></div>
 </section>
 
-<!-- PRODUCTS SECTION -->
+<!-- PRODUCTS SECTION — Nexdrop style category tabs + product grid -->
 <div id="products" style="padding-top: 8px;"></div>
 <div class="cat-tabs" id="categoryTabsContainer"></div>
 <div class="products-grid" id="productsGrid"></div>
 
-<!-- COMMERCIAL -->
+<!-- COMMERCIAL — Pandey Enterprises unchanged -->
 <div id="commercial" class="commercial">
   <div>
     <h3>Industrial RO Systems &amp; Bulk Supply</h3>
@@ -476,7 +466,7 @@
   <i class="fas fa-industry" style="font-size: 4.5rem; opacity: 0.3;"></i>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER — Pandey Enterprises unchanged -->
 <footer id="contact">
   <div class="footer-grid">
     <div>
@@ -502,10 +492,10 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- OVERLAY (cart + mobile) -->
+<!-- OVERLAY -->
 <div class="overlay" id="overlay"></div>
 
-<!-- CART SIDEBAR -->
+<!-- CART SIDEBAR — Nexdrop style -->
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">
     <h3><i class="fas fa-shopping-cart" style="color:#0e7e8c;"></i> Your Cart</h3>
@@ -518,9 +508,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     USER LOGIN / REGISTER / ACCOUNT MODAL
-════════════════════════════════════════════════════════ -->
+<!-- USER MODAL — Nexdrop style -->
 <div class="modal-overlay" id="userModal">
   <div class="modal-box">
     <div class="modal-header">
@@ -528,15 +516,11 @@
       <button class="modal-close" onclick="closeUserModal()">&times;</button>
     </div>
     <div class="modal-body">
-
-      <!-- When NOT logged in: Login / Register tabs -->
       <div id="authPanel">
         <div class="modal-tabs">
           <button class="modal-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
           <button class="modal-tab" id="tabRegister" onclick="switchAuthTab('register')">Register</button>
         </div>
-
-        <!-- LOGIN FORM -->
         <div id="loginForm">
           <div class="form-group">
             <label>Phone Number</label>
@@ -548,8 +532,6 @@
           </div>
           <button class="btn-full btn-primary-full" onclick="doUserLogin()">Login</button>
         </div>
-
-        <!-- REGISTER FORM -->
         <div id="registerForm" style="display:none;">
           <div class="form-group">
             <label>Full Name</label>
@@ -570,8 +552,6 @@
           <button class="btn-full btn-primary-full" onclick="doUserRegister()">Create Account</button>
         </div>
       </div>
-
-      <!-- When logged in: Account info + logout -->
       <div id="accountPanel" style="display:none;">
         <div class="user-info-box">
           <div class="user-avatar"><i class="fas fa-user"></i></div>
@@ -585,18 +565,15 @@
           <i class="fas fa-sign-out-alt"></i> Logout
         </button>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     ADMIN PANEL
-════════════════════════════════════════════════════════ -->
+<!-- ADMIN PANEL — Nexdrop full admin with all tabs -->
 <div class="admin-overlay" id="adminOverlay">
   <div class="admin-box">
     <div class="admin-bar">
-      <h2><i class="fas fa-user-shield"></i> Admin Dashboard</h2>
+      <h2><i class="fas fa-user-shield"></i> Admin Dashboard — Pandey Enterprises</h2>
       <div class="admin-bar-right">
         <button class="admin-logout-btn" id="adminLogoutBtn" style="display:none;" onclick="doAdminLogout()">
           <i class="fas fa-sign-out-alt"></i> Logout
@@ -606,10 +583,10 @@
     </div>
     <div class="admin-inner">
 
-      <!-- ADMIN LOGIN PANEL -->
+      <!-- ADMIN LOGIN -->
       <div id="adminLoginPanel">
         <h3>Admin Login</h3>
-        <p>Pandey Enterprises · Siwan</p>
+        <p>Pandey Enterprises · Siwan, Bihar</p>
         <div class="form-group" style="text-align:left;">
           <label>Username</label>
           <input type="text" id="adminUser" placeholder="admin">
@@ -621,21 +598,70 @@
         <button class="btn-full btn-primary-full" id="adminSubmitBtn">
           <i class="fas fa-sign-in-alt"></i> Login to Admin
         </button>
-
       </div>
 
       <!-- ADMIN DASHBOARD -->
       <div id="adminDash" style="display: none;">
-        <div class="a-tabs-row">
-          <button class="a-tab active" data-panel="orders"><i class="fas fa-list-alt"></i> Orders</button>
-          <button class="a-tab" data-panel="products"><i class="fas fa-boxes"></i> Products</button>
-          <button class="a-tab" data-panel="addproduct"><i class="fas fa-plus"></i> Add Product</button>
-          <button class="a-tab" data-panel="addcategory"><i class="fas fa-tags"></i> Categories</button>
-          <button class="a-tab" data-panel="customers"><i class="fas fa-users"></i> Customers</button>
+
+        <!-- Stats -->
+        <div class="admin-stats">
+          <div class="stat-card"><div class="stat-number" id="statProducts">0</div><div>Products</div></div>
+          <div class="stat-card"><div class="stat-number" id="statOrders">0</div><div>Total Orders</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#d0f0d8,#a8e0b8);"><div class="stat-number" id="statTodayOrders">0</div><div>Today Orders</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#fef3c7,#fde68a);"><div class="stat-number" id="statTotalSales">₹0</div><div>Total Sales</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);"><div class="stat-number" id="statTodaySales">₹0</div><div>Today Sales</div></div>
+          <div class="stat-card"><div class="stat-number" id="statUsers">0</div><div>Users</div></div>
+          <div class="stat-card"><div class="stat-number" id="statEnquiries">0</div><div>Enquiries</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#fee2e2,#fca5a5);"><div class="stat-number" id="statPending">0</div><div>⏳ Pending</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#fef3c7,#fbbf24);"><div class="stat-number" id="statProcessing">0</div><div>⚙️ Processing</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#dbeafe,#93c5fd);"><div class="stat-number" id="statShipped">0</div><div>🚚 Shipped</div></div>
+          <div class="stat-card" style="background:linear-gradient(135deg,#d1fae5,#6ee7b7);"><div class="stat-number" id="statDelivered">0</div><div>✅ Delivered</div></div>
         </div>
 
-        <!-- ORDERS -->
-        <div id="panelOrders">
+        <!-- Admin Tabs -->
+        <div class="a-tabs-row">
+          <button class="a-tab active" data-panel="products"><i class="fas fa-boxes"></i> Products</button>
+          <button class="a-tab" data-panel="orders"><i class="fas fa-list-alt"></i> Orders</button>
+          <button class="a-tab" data-panel="customers"><i class="fas fa-users"></i> Users</button>
+          <button class="a-tab" data-panel="enquiries"><i class="fas fa-envelope"></i> Enquiries</button>
+          <button class="a-tab" data-panel="addcategory"><i class="fas fa-tags"></i> Categories</button>
+          <button class="a-tab brcm-tab-special" data-panel="broadcast"><i class="fab fa-whatsapp"></i> Broadcast</button>
+          <button class="a-tab" data-panel="settings"><i class="fas fa-cog"></i> Settings</button>
+        </div>
+
+        <!-- PRODUCTS PANEL -->
+        <div id="panelProducts" class="tab-panel active">
+          <div class="add-form">
+            <h4>➕ Add New Product</h4>
+            <div class="add-form-row">
+              <input type="text" id="newProductName" placeholder="Product Name *">
+              <input type="text" id="newProductCategory" placeholder="Category (e.g. Domestic RO)">
+            </div>
+            <div class="add-form-row">
+              <input type="number" id="newProductPrice" placeholder="Price (₹) *">
+              <input type="number" id="newProductOldPrice" placeholder="Old Price (₹)">
+            </div>
+            <div class="add-form-row">
+              <input type="number" id="newProductDiscount" placeholder="Discount %" value="0">
+              <input type="number" id="newProductCourier" placeholder="Courier Charge (₹)" value="0">
+            </div>
+            <input type="text" id="newProductDesc" placeholder="Description">
+            <input type="text" id="newProductIcon" placeholder="FontAwesome icon class (e.g. fas fa-cog)" value="fas fa-cog">
+            <label style="font-size:0.8rem;color:#6b8499;">📷 Product Photo (optional):</label>
+            <input type="file" id="newProductPhoto" accept="image/*" style="margin-bottom:10px;">
+            <button class="btn-add-item" onclick="addProduct()"><i class="fas fa-plus"></i> Add Product</button>
+          </div>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead><tr><th>Photo</th><th>Name</th><th>Price</th><th>Disc%</th><th>Courier</th><th style="min-width:180px;">Description ✏️</th><th>Stock</th><th>Action</th></tr></thead>
+              <tbody id="adminProductsList"></tbody>
+            </table>
+          </div>
+          <button class="save-btn" onclick="saveAllProducts()" style="margin-top:10px;">💾 Save All Products</button>
+        </div>
+
+        <!-- ORDERS PANEL -->
+        <div id="panelOrders" class="tab-panel">
           <h4 style="margin-bottom:14px;">All Orders</h4>
           <div class="table-responsive">
             <table class="data-table">
@@ -645,58 +671,9 @@
           </div>
         </div>
 
-        <!-- PRODUCTS -->
-        <div id="panelProducts" style="display:none;">
-          <h4 style="margin-bottom:14px;">All Products</h4>
-          <div id="productsTableBody"></div>
-        </div>
-
-        <!-- ADD PRODUCT -->
-        <div id="panelAddProduct" style="display:none;">
-          <div class="add-form">
-            <h4>Add New Product</h4>
-
-            <!-- Photo upload -->
-            <p style="font-size:0.8rem; font-weight:600; color:#6b8499; margin-bottom:6px;">Product Photo</p>
-            <img id="photoPreview" class="photo-preview" alt="Preview">
-            <button class="photo-remove-btn" id="photoRemoveBtn" onclick="removePhoto()"><i class="fas fa-times"></i> Remove Photo</button>
-            <div class="photo-upload-area" id="photoUploadArea" onclick="document.getElementById('photoInput').click()">
-              <i class="fas fa-camera"></i>
-              <p>Tap to upload photo from gallery</p>
-              <p style="font-size:0.72rem; color:#b0c4d0; margin-top:4px;">JPG, PNG · Auto compressed</p>
-            </div>
-            <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
-
-            <input type="text" id="newProductName" placeholder="Product Name *">
-            <input type="text" id="newProductDesc" placeholder="Description">
-            <div class="add-form-row">
-              <input type="number" id="newProductPrice" placeholder="Price (₹) *">
-              <input type="number" id="newProductOldPrice" placeholder="Old Price (₹)">
-            </div>
-            <select id="newProductCategory">
-              <option value="domestic">Domestic RO</option>
-              <option value="commercial">Commercial RO</option>
-              <option value="spares">Spare Parts</option>
-            </select>
-            <input type="text" id="newProductIcon" placeholder="Icon class (e.g. fas fa-cog) — used if no photo" value="fas fa-cog">
-            <button id="saveProductBtn" class="btn-add-item"><i class="fas fa-save"></i> Save Product</button>
-          </div>
-        </div>
-
-        <!-- CATEGORIES -->
-        <div id="panelAddCategory" style="display:none;">
-          <div class="add-form">
-            <h4>Add New Category</h4>
-            <input type="text" id="newCategoryName" placeholder="Category Name (e.g., UV Filters)">
-            <input type="text" id="newCategoryKey" placeholder="Category Key (e.g., uv-filters)">
-            <button id="saveCategoryBtn" class="btn-add-item">Add Category</button>
-          </div>
-          <div id="categoriesList"></div>
-        </div>
-
-        <!-- CUSTOMERS -->
-        <div id="panelCustomers" style="display:none;">
-          <h4 style="margin-bottom:14px;">Customer List</h4>
+        <!-- USERS PANEL -->
+        <div id="panelCustomers" class="tab-panel">
+          <h4 style="margin-bottom:14px;">Registered Users</h4>
           <div class="table-responsive">
             <table class="data-table">
               <thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Address</th><th>Joined</th><th>WhatsApp</th></tr></thead>
@@ -704,8 +681,107 @@
             </table>
           </div>
         </div>
-      </div>
 
+        <!-- ENQUIRIES PANEL -->
+        <div id="panelEnquiries" class="tab-panel">
+          <h4 style="margin-bottom:14px;">Bulk / Commercial Enquiries</h4>
+          <div id="enquiriesList"></div>
+        </div>
+
+        <!-- CATEGORIES PANEL -->
+        <div id="panelAddCategory" class="tab-panel">
+          <div class="add-form">
+            <h4>Add New Category</h4>
+            <input type="text" id="newCategoryName" placeholder="Category Name (e.g., UV Filters)">
+            <input type="text" id="newCategoryKey" placeholder="Category Key (e.g., uv-filters)">
+            <button id="saveCategoryBtn" class="btn-add-item">Add Category</button>
+          </div>
+          <div id="categoriesListAdmin"></div>
+        </div>
+
+        <!-- BROADCAST PANEL -->
+        <div id="panelBroadcast" class="tab-panel">
+          <div style="max-width:600px;">
+            <div style="background:#f0fff4;border-radius:16px;padding:1.2rem;margin-bottom:1rem;border:1px solid #c8e6c9;">
+              <h4 style="margin-bottom:0.5rem;color:#0d2137;">📢 WhatsApp Broadcast Message</h4>
+              <p style="font-size:0.78rem;color:#6b8499;margin-bottom:1rem;">Sabhi registered users ko ek saath WhatsApp message bhejein.</p>
+              <label style="font-size:0.8rem;font-weight:600;color:#6b8499;">📝 Template Select Karein</label>
+              <select id="brcmTemplate" onchange="applyBRCMTemplate()" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;font-size:0.82rem;">
+                <option value="">-- Template Select Karein --</option>
+                <option value="promo">🎉 New Offer / Promotion</option>
+                <option value="stock">📦 New Stock Arrived</option>
+                <option value="festive">🎊 Festival Greetings</option>
+              </select>
+              <label style="font-size:0.8rem;font-weight:600;color:#6b8499;">💬 Message</label>
+              <textarea id="brcmMessage" rows="6" placeholder="Apna broadcast message yahan likhein..." style="width:100%;padding:0.6rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;font-family:inherit;font-size:0.82rem;resize:vertical;"></textarea>
+              <label style="font-size:0.8rem;font-weight:600;color:#6b8499;">👥 Recipients</label>
+              <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;align-items:center;">
+                <button onclick="selectAllBRCM(true)" style="background:#0d2137;color:white;border:none;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.72rem;cursor:pointer;">✅ Select All</button>
+                <button onclick="selectAllBRCM(false)" style="background:#999;color:white;border:none;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.72rem;cursor:pointer;">❌ Deselect All</button>
+                <span id="brcmCount" style="font-size:0.75rem;color:#0e7e8c;font-weight:700;">0 selected</span>
+              </div>
+              <div id="brcmUserList" style="max-height:220px;overflow-y:auto;border:1px solid #e0eaf0;border-radius:10px;padding:0.5rem;background:white;margin-bottom:1rem;"></div>
+              <button onclick="sendBRCM()" style="width:100%;padding:0.75rem;background:#25D366;color:white;border:none;border-radius:12px;font-weight:700;font-size:0.95rem;cursor:pointer;">
+                <i class="fab fa-whatsapp"></i> WhatsApp Broadcast Bhejein
+              </button>
+              <p style="font-size:0.68rem;color:#999;text-align:center;margin-top:0.5rem;">* Har user ka WhatsApp ek-ek karke khulega (1.5 sec interval)</p>
+            </div>
+            <div style="background:#fff8f0;border-radius:16px;padding:1.2rem;border:1px solid #fde68a;">
+              <h4 style="margin-bottom:0.8rem;color:#0d2137;">📞 Custom Number pe Message Bhejein</h4>
+              <input type="tel" id="brcmCustomPhone" placeholder="Mobile number (10 digits)" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.6rem;">
+              <button onclick="sendBRCMCustom()" style="width:100%;padding:0.6rem;background:#e8841a;color:white;border:none;border-radius:10px;font-weight:600;cursor:pointer;">📨 Send to This Number</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS PANEL -->
+        <div id="panelSettings" class="tab-panel">
+          <div style="max-width:500px;">
+            <div style="background:#f0f4f7;border-radius:16px;padding:1.2rem;margin-bottom:1rem;">
+              <h4 style="margin-bottom:1rem;color:#0d2137;">⚙️ Store Settings</h4>
+              <label style="font-size:0.8rem;font-weight:600;color:#6b8499;">Default Courier Charge (₹)</label>
+              <input type="number" id="defaultCourier" value="40" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;">
+              <label style="font-size:0.8rem;font-weight:600;color:#6b8499;">Free Delivery Above (₹)</label>
+              <input type="number" id="freeMin" value="999" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;">
+              <label style="font-size:0.8rem;font-weight:600;color:#6b8499;">WhatsApp Number</label>
+              <input type="text" id="whatsappNo" value="919006686591" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;">
+              <button class="save-btn" onclick="saveSettings()" style="width:100%;padding:0.6rem;">💾 Save Settings</button>
+            </div>
+            <div style="background:#f0f4f7;border-radius:16px;padding:1.2rem;margin-bottom:1rem;">
+              <h4 style="margin-bottom:1rem;color:#0d2137;">🔐 Change Admin Password</h4>
+              <div id="passMsg" style="display:none;padding:0.5rem 0.8rem;border-radius:8px;margin-bottom:0.7rem;font-size:0.8rem;"></div>
+              <input type="password" id="oldPass" placeholder="Current Password" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;">
+              <input type="password" id="newPass" placeholder="New Password" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;">
+              <input type="password" id="confirmPass" placeholder="Confirm New Password" style="width:100%;padding:0.5rem;border:1px solid #ddd;border-radius:8px;margin-bottom:0.7rem;">
+              <button class="save-btn" onclick="changePassword()" style="width:100%;padding:0.6rem;background:#e8841a;">🔐 Change Password</button>
+            </div>
+            <div style="background:#fee2e2;border-radius:16px;padding:1.2rem;margin-bottom:1rem;border:1px solid #fca5a5;">
+              <h4 style="margin-bottom:0.5rem;color:#dc2626;">🗑️ Data Reset</h4>
+              <p style="font-size:0.78rem;color:#6b8499;margin-bottom:0.8rem;">Orders, Users, Enquiries reset honge. Products safe rahenge.</p>
+              <button onclick="clearAllTestData()" style="width:100%;padding:0.6rem;background:#dc2626;color:white;border:none;border-radius:10px;font-weight:600;cursor:pointer;font-size:0.9rem;">🗑️ Clear Orders / Users / Enquiries</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /adminDash -->
+    </div><!-- /admin-inner -->
+  </div><!-- /admin-box -->
+</div><!-- /admin-overlay -->
+
+<!-- BULK ENQUIRY MODAL -->
+<div class="modal-overlay" id="bulkEnquiryModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3><i class="fas fa-industry"></i> Commercial Enquiry</h3>
+      <button class="modal-close" onclick="closeBulkEnquiryModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Your Name</label><input type="text" id="bulkName" placeholder="Full name"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" id="bulkPhone" placeholder="+91 98765 43210"></div>
+      <div class="form-group"><label>Product / Service</label><input type="text" id="bulkProduct" placeholder="What do you need?"></div>
+      <div class="form-group"><label>Quantity / Requirement</label><input type="text" id="bulkQuantity" placeholder="e.g. 2 RO units"></div>
+      <div class="form-group"><label>Message</label><textarea id="bulkMessage" rows="3" placeholder="Additional details..."></textarea></div>
+      <button class="btn-full btn-primary-full" onclick="sendBulkEnquiry()"><i class="fab fa-whatsapp"></i> Send Enquiry on WhatsApp</button>
     </div>
   </div>
 </div>
@@ -714,16 +790,21 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// DATA
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// DATA & STATE
+// ═══════════════════════════════════════════════════════
 const ADMIN_CREDENTIALS = { username: 'admin', password: 'admin123' };
 
 let products = [
-  { id:1, name:"Domestic RO System", desc:"8L storage, UV+UF purification", price:8999, oldPrice:12999, category:"domestic", icon:"fas fa-home", photo: null },
-  { id:2, name:"RO Membrane 75 GPD", desc:"High rejection, long life", price:1299, oldPrice:1899, category:"spares", icon:"fas fa-circle", photo: null },
-  { id:3, name:"Sediment Filter", desc:"5 micron, 10 inch", price:180, oldPrice:350, category:"spares", icon:"fas fa-filter", photo: null },
-  { id:4, name:"Commercial RO 250 LPH", desc:"SS frame, industrial grade", price:48500, oldPrice:59000, category:"commercial", icon:"fas fa-building", photo: null }
+  { id:1, name:"Domestic RO System", desc:"8L storage, UV+UF purification, 7-stage", icon:"fas fa-home", price:8999, oldPrice:12999, discount:31, courierCharge:0, rating:4.8, ratingCount:124, category:"domestic", inStock:true, imageType:"icon", imageValue:"fas fa-home", highlights:["💧 7-stage purification","🔵 UV+UF technology","📦 8L storage tank","✅ 1 year warranty"] },
+  { id:2, name:"RO Membrane 75 GPD", desc:"High rejection TFC membrane, long life", icon:"fas fa-circle", price:1299, oldPrice:1899, discount:32, courierCharge:49, rating:4.7, ratingCount:312, category:"spares", inStock:true, imageType:"icon", imageValue:"fas fa-circle", highlights:["🔬 75 GPD capacity","💦 High rejection rate","📅 12-18 month life","✅ Universal fit"] },
+  { id:3, name:"Sediment Filter 5 Micron", desc:"10 inch standard size, removes dirt & rust", icon:"fas fa-filter", price:180, oldPrice:350, discount:49, courierCharge:39, rating:4.6, ratingCount:203, category:"spares", inStock:true, imageType:"icon", imageValue:"fas fa-filter", highlights:["🧹 5 micron filtration","📏 10 inch size","🔧 Easy installation","💰 Best value"] },
+  { id:4, name:"Commercial RO 250 LPH", desc:"SS frame, industrial grade, automatic", icon:"fas fa-building", price:48500, oldPrice:59000, discount:18, courierCharge:0, rating:4.9, ratingCount:45, category:"commercial", inStock:true, imageType:"icon", imageValue:"fas fa-building", highlights:["⚡ 250 LPH capacity","🏗️ SS frame body","🤖 Auto flush system","📋 AMC available"] }
+];
+
+let b2bProducts = [
+  { id:1, name:"Commercial RO 500 LPH", category:"Commercial", desc:"Hotels, hospitals & factories", icon:"🏭", price:"₹85,000+", minQty:"1 unit", imageType:"emoji", imageValue:"🏭", highlights:["⚡ 500 LPH output","🏗️ Heavy duty frame","🤖 Auto controls","📞 On-site installation"] },
+  { id:2, name:"Bulk Membrane Supply", category:"Reseller", desc:"OEM membranes for service centers", icon:"🔬", price:"₹950/pc (10+ qty)", minQty:"10 pcs", imageType:"emoji", imageValue:"🔬", highlights:["📦 Bulk pricing","🔬 TFC technology","✅ Quality certified","🚚 Pan India delivery"] }
 ];
 
 let customCategories = JSON.parse(localStorage.getItem('pe_categories') || '[]');
@@ -731,25 +812,28 @@ let cart = [];
 let currentCat = "all";
 let orders = JSON.parse(localStorage.getItem('pe_orders') || '[]');
 let customers = JSON.parse(localStorage.getItem('pe_customers') || '[]');
+let bulkEnquiries = JSON.parse(localStorage.getItem('pe_bulk') || '[]');
+let settings = { defaultCourier: 49, freeMin: 999, whatsappNo: "919006686591", adminPassword: "admin123" };
 
-// Load saved products (with photos stored as base64)
 let savedProducts = localStorage.getItem('pe_products');
 if (savedProducts) products = JSON.parse(savedProducts);
+let savedSettings = localStorage.getItem('pe_settings');
+if (savedSettings) settings = { ...settings, ...JSON.parse(savedSettings) };
 
-// Auth state — persists across page reload
 let adminLoggedIn = localStorage.getItem('pe_admin_session') === 'true';
 let currentUser = JSON.parse(localStorage.getItem('pe_current_user') || 'null');
 let registeredUsers = JSON.parse(localStorage.getItem('pe_users') || '[]');
 
-// Photo upload state
-let pendingPhotoBase64 = null;
-
-function saveProducts() { localStorage.setItem('pe_products', JSON.stringify(products)); }
+function saveProducts() { localStorage.setItem('pe_products', JSON.stringify(products)); updateStats(); }
+function saveOrders() { localStorage.setItem('pe_orders', JSON.stringify(orders)); updateStats(); }
+function saveCustomers() { localStorage.setItem('pe_customers', JSON.stringify(customers)); updateStats(); }
+function saveBulk() { localStorage.setItem('pe_bulk', JSON.stringify(bulkEnquiries)); updateStats(); }
+function saveSettingsData() { localStorage.setItem('pe_settings', JSON.stringify(settings)); }
 function fmtPrice(p) { return '₹' + Number(p).toLocaleString('en-IN'); }
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // TOAST
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function showToast(msg, duration = 2600) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -757,15 +841,36 @@ function showToast(msg, duration = 2600) {
   setTimeout(() => t.classList.remove('show'), duration);
 }
 
-// ══════════════════════════════════════════════════════
-// HAMBURGER
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════════════════
 document.getElementById('hamburgerBtn').onclick = () => document.getElementById('mobileMenu').classList.toggle('open');
 function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-// ══════════════════════════════════════════════════════
-// CATEGORY TABS
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// STATS
+// ═══════════════════════════════════════════════════════
+function updateStats() {
+  if(document.getElementById('statProducts')) document.getElementById('statProducts').innerText = products.length;
+  if(document.getElementById('statOrders')) document.getElementById('statOrders').innerText = orders.length;
+  if(document.getElementById('statUsers')) document.getElementById('statUsers').innerText = customers.length;
+  if(document.getElementById('statEnquiries')) document.getElementById('statEnquiries').innerText = bulkEnquiries.length;
+  let totalSales = orders.reduce((s,o) => s + (parseInt(o.total)||0), 0);
+  let todayStr = new Date().toLocaleDateString('en-IN');
+  let todayOrders = orders.filter(o => { try { return new Date(o.date).toLocaleDateString('en-IN') === todayStr; } catch(e) { return false; } });
+  let todaySales = todayOrders.reduce((s,o) => s + (parseInt(o.total)||0), 0);
+  if(document.getElementById('statTotalSales')) document.getElementById('statTotalSales').innerText = fmtPrice(totalSales);
+  if(document.getElementById('statTodaySales')) document.getElementById('statTodaySales').innerText = fmtPrice(todaySales);
+  if(document.getElementById('statTodayOrders')) document.getElementById('statTodayOrders').innerText = todayOrders.length;
+  if(document.getElementById('statPending')) document.getElementById('statPending').innerText = orders.filter(o=>o.status==='Pending').length;
+  if(document.getElementById('statProcessing')) document.getElementById('statProcessing').innerText = orders.filter(o=>o.status==='Confirmed'||o.status==='Processing').length;
+  if(document.getElementById('statShipped')) document.getElementById('statShipped').innerText = orders.filter(o=>o.status==='Shipped').length;
+  if(document.getElementById('statDelivered')) document.getElementById('statDelivered').innerText = orders.filter(o=>o.status==='Delivered').length;
+}
+
+// ═══════════════════════════════════════════════════════
+// CATEGORY TABS (Nexdrop style)
+// ═══════════════════════════════════════════════════════
 function renderCategoryTabs() {
   let container = document.getElementById('categoryTabsContainer');
   let base = [
@@ -787,9 +892,14 @@ function renderCategoryTabs() {
   });
 }
 
-// ══════════════════════════════════════════════════════
-// PRODUCTS
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// PRODUCTS (Nexdrop card style)
+// ═══════════════════════════════════════════════════════
+function renderHighlights(highlights) {
+  if(!highlights || !highlights.length) return '';
+  return '<div class="product-highlights">' + highlights.map(h => `<span class="highlight-tag">${h}</span>`).join('') + '</div>';
+}
+
 function renderProducts() {
   let grid = document.getElementById('productsGrid');
   let filtered = currentCat === 'all' ? products : products.filter(p => p.category === currentCat);
@@ -797,21 +907,29 @@ function renderProducts() {
     grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-box-open"></i><p>No products in this category</p></div>`;
     return;
   }
+  let discPrice = p => p.discount ? Math.round(p.price - p.price * p.discount / 100) : p.price;
+  let stars = p => { let s=''; for(let i=1;i<=5;i++) s += i<=(p.rating||4)?'★':'☆'; return s; };
   grid.innerHTML = filtered.map(p => `
     <div class="product-card">
+      ${p.discount ? `<div class="product-badge">${p.discount}% OFF</div>` : ''}
       <div class="product-img">
-        ${p.photo
-          ? `<img src="${p.photo}" alt="${p.name}">`
+        ${p.imageType === 'upload' && p.imageValue
+          ? `<img src="${p.imageValue}" alt="${p.name}">`
           : `<i class="${p.icon || 'fas fa-cog'}"></i>`}
       </div>
       <div class="product-body">
         <div class="product-name">${p.name}</div>
         <div class="product-desc">${p.desc}</div>
+        ${renderHighlights(p.highlights)}
+        ${p.rating ? `<div class="product-rating">${stars(p)} (${p.ratingCount||0})</div>` : ''}
         <div class="price-row">
-          <span class="price-new">${fmtPrice(p.price)}</span>
-          ${p.oldPrice > p.price ? `<span class="price-old">${fmtPrice(p.oldPrice)}</span>` : ''}
+          <span class="price-new">${fmtPrice(discPrice(p))}</span>
+          ${p.oldPrice && p.oldPrice > p.price ? `<span class="price-old">${fmtPrice(p.oldPrice)}</span>` : ''}
         </div>
-        <button class="btn-add-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        ${p.courierCharge === 0 ? '<div class="courier-note">✅ Free Delivery</div>' : `<div class="courier-note">+${fmtPrice(p.courierCharge)} delivery</div>`}
+        ${p.inStock !== false
+          ? `<button class="btn-add-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add to Cart</button>`
+          : `<button class="btn-add-cart" disabled>Out of Stock</button>`}
       </div>
     </div>
   `).join('');
@@ -820,26 +938,25 @@ function renderProducts() {
   });
 }
 
-// ══════════════════════════════════════════════════════
-// CART
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// CART (Nexdrop sidebar style)
+// ═══════════════════════════════════════════════════════
 function addToCart(id) {
-  id = parseInt(id);
-  let p = products.find(x => parseInt(x.id) === id);
+  let p = products.find(x => x.id === id);
   if (!p) return;
-  let existing = cart.find(x => parseInt(x.id) === id);
+  let price = p.discount ? Math.round(p.price - p.price * p.discount / 100) : p.price;
+  let existing = cart.find(x => x.id === id);
   if (existing) existing.qty++;
-  else cart.push({ ...p, qty: 1 });
+  else cart.push({ id: p.id, name: p.name, price: price, qty: 1, courierCharge: p.courierCharge || 0 });
   updateCart(); openCart();
   showToast(`✅ ${p.name} added to cart`);
 }
 
 function changeQty(id, delta) {
-  id = parseInt(id);
-  let item = cart.find(x => parseInt(x.id) === id);
+  let item = cart.find(x => x.id === id);
   if (!item) return;
   item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(x => parseInt(x.id) !== id);
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
   updateCart();
 }
 
@@ -852,6 +969,10 @@ function updateCart() {
     document.getElementById('cartTotal').innerText = '₹0';
     return;
   }
+  let subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  let maxCourier = Math.max(...cart.map(i => i.courierCharge || 0));
+  let courier = subtotal >= settings.freeMin ? 0 : maxCourier;
+  let total = subtotal + courier;
   body.innerHTML = cart.map(item => `
     <div class="cart-item">
       <div class="cart-item-info">
@@ -864,8 +985,11 @@ function updateCart() {
         <button onclick="changeQty(${item.id}, 1)">+</button>
       </div>
     </div>
-  `).join('');
-  document.getElementById('cartTotal').innerText = fmtPrice(cart.reduce((s, i) => s + i.price * i.qty, 0));
+  `).join('') + `<div style="background:#f0f4f7;padding:10px;border-radius:8px;margin-top:8px;font-size:0.82rem;">
+    <div style="display:flex;justify-content:space-between;"><span>Subtotal:</span><span>${fmtPrice(subtotal)}</span></div>
+    <div style="display:flex;justify-content:space-between;"><span>Delivery:</span><span>${courier===0?'<span style="color:green">FREE</span>':fmtPrice(courier)}</span></div>
+  </div>`;
+  document.getElementById('cartTotal').innerText = fmtPrice(total);
 }
 
 function openCart() {
@@ -877,12 +1001,11 @@ function closeCart() {
   document.getElementById('overlay').classList.remove('open');
 }
 
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 // WHATSAPP ORDER
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
 function sendWhatsAppOrder() {
   if (cart.length === 0) { showToast('⚠️ Cart is empty!'); return; }
-
   let name, phone;
   if (currentUser) {
     name = currentUser.name;
@@ -893,12 +1016,13 @@ function sendWhatsAppOrder() {
     phone = prompt('WhatsApp number (with +91):', '+91');
     if (!phone || !phone.trim()) return;
   }
-
-  let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-  let msg = `*New Order - Pandey Enterprises*%0A%0A*Customer:* ${name.trim()}%0A*Phone:* ${phone.trim()}%0A%0A*Items:*%0A`;
-  cart.forEach(i => { msg += `• ${i.name} × ${i.qty} = ${fmtPrice(i.price * i.qty)}%0A`; });
-  msg += `%0A*Total: ${fmtPrice(total)}*%0A%0AStore: Lalan Complex, Siwan`;
-
+  let subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  let maxCourier = Math.max(...cart.map(i => i.courierCharge || 0));
+  let courier = subtotal >= settings.freeMin ? 0 : maxCourier;
+  let total = subtotal + courier;
+  let msg = `*New Order - Pandey Enterprises*\n\n*Customer:* ${name.trim()}\n*Phone:* ${phone.trim()}\n\n*Items:*\n`;
+  cart.forEach(i => { msg += `• ${i.name} × ${i.qty} = ${fmtPrice(i.price * i.qty)}\n`; });
+  msg += `\nSubtotal: ${fmtPrice(subtotal)}\nDelivery: ${courier===0?'FREE':fmtPrice(courier)}\n*Total: ${fmtPrice(total)}*\n\nStore: Lalan Complex, Siwan, Bihar`;
   let order = {
     id: Date.now(), name: name.trim(), phone: phone.trim(),
     items: cart.map(i => `${i.name} ×${i.qty}`).join(', '),
@@ -907,18 +1031,17 @@ function sendWhatsAppOrder() {
   orders.unshift(order);
   if (!customers.find(c => c.phone === phone.trim())) {
     customers.unshift({ name: name.trim(), phone: phone.trim(), address: currentUser?.address || '', date: new Date().toLocaleString('en-IN') });
+    saveCustomers();
   }
-  localStorage.setItem('pe_orders', JSON.stringify(orders));
-  localStorage.setItem('pe_customers', JSON.stringify(customers));
-
-  window.open(`https://wa.me/919006686591?text=${msg}`, '_blank');
+  saveOrders();
+  window.open(`https://wa.me/${settings.whatsappNo}?text=${encodeURIComponent(msg)}`, '_blank');
   cart = []; updateCart(); closeCart();
   showToast('✅ Order sent on WhatsApp!');
 }
 
-// ══════════════════════════════════════════════════════
-// USER AUTH
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// USER AUTH (Nexdrop style)
+// ═══════════════════════════════════════════════════════
 function openUserModal() {
   document.getElementById('userModal').classList.add('open');
   if (currentUser) showAccountPanel();
@@ -936,7 +1059,6 @@ function showAccountPanel() {
   document.getElementById('accountName').textContent = currentUser.name;
   document.getElementById('accountPhone').textContent = currentUser.phone;
   document.getElementById('accountAddress').textContent = currentUser.address || '';
-  // Show this user's orders
   let myOrders = orders.filter(o => o.phone === currentUser.phone);
   let el = document.getElementById('myOrdersList');
   if (myOrders.length === 0) {
@@ -950,7 +1072,7 @@ function showAccountPanel() {
         </div>
         <div style="text-align:right;">
           <div style="font-weight:700; font-size:0.85rem;">${fmtPrice(o.total)}</div>
-          <div style="font-size:0.72rem; color: ${o.status==='Delivered'?'#065f46':o.status==='Cancelled'?'#dc2626':'#856404'};">${o.status}</div>
+          <div style="font-size:0.72rem; color:${o.status==='Delivered'?'#065f46':o.status==='Cancelled'?'#dc2626':'#856404'};">${o.status}</div>
         </div>
       </div>
     `).join('');
@@ -983,21 +1105,20 @@ function doUserRegister() {
   let address = document.getElementById('regAddress').value.trim();
   let password = document.getElementById('regPassword').value.trim();
   if (!name || !phone || !password) { showToast('⚠️ Naam, phone aur password zaroori hai'); return; }
-  if (password.length < 4) { showToast('⚠️ Password kam se kam 4 character ka hona chahiye'); return; }
-  if (registeredUsers.find(u => u.phone === phone)) { showToast('⚠️ Is phone number se account pehle se hai'); return; }
+  if (password.length < 4) { showToast('⚠️ Password 4+ characters ka hona chahiye'); return; }
+  if (registeredUsers.find(u => u.phone === phone)) { showToast('⚠️ Is number se account pehle se hai'); return; }
   let user = { name, phone, address, password, joined: new Date().toLocaleString('en-IN') };
   registeredUsers.push(user);
   localStorage.setItem('pe_users', JSON.stringify(registeredUsers));
-  // Also add to customers
   if (!customers.find(c => c.phone === phone)) {
     customers.unshift({ name, phone, address, date: user.joined });
-    localStorage.setItem('pe_customers', JSON.stringify(customers));
+    saveCustomers();
   }
   currentUser = user;
   localStorage.setItem('pe_current_user', JSON.stringify(user));
   updateUserNav();
   showAccountPanel();
-  showToast(`✅ Account bana diya, ${name}! Welcome!`);
+  showToast(`✅ Account bana diya, ${name}!`);
 }
 
 function doUserLogout() {
@@ -1020,9 +1141,33 @@ function updateUserNav() {
   }
 }
 
-// ══════════════════════════════════════════════════════
-// ADMIN AUTH
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// BULK / COMMERCIAL ENQUIRY
+// ═══════════════════════════════════════════════════════
+function openBulkEnquiryModal() {
+  document.getElementById('bulkEnquiryModal').classList.add('open');
+}
+function closeBulkEnquiryModal() {
+  document.getElementById('bulkEnquiryModal').classList.remove('open');
+}
+function sendBulkEnquiry() {
+  let name = document.getElementById('bulkName').value.trim();
+  let phone = document.getElementById('bulkPhone').value.trim();
+  let product = document.getElementById('bulkProduct').value.trim();
+  let qty = document.getElementById('bulkQuantity').value.trim();
+  let msg = document.getElementById('bulkMessage').value.trim();
+  if (!name || !phone) { showToast('⚠️ Naam aur phone zaroori hai'); return; }
+  let enquiry = { id: Date.now(), name, phone, product, quantity: qty, message: msg, date: new Date().toLocaleString('en-IN'), status: 'New' };
+  bulkEnquiries.unshift(enquiry); saveBulk();
+  let waMsg = `*Commercial Enquiry - Pandey Enterprises*\n\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nQuantity: ${qty}\nMessage: ${msg}\n\nPlease share pricing.`;
+  closeBulkEnquiryModal();
+  window.open(`https://wa.me/${settings.whatsappNo}?text=${encodeURIComponent(waMsg)}`, '_blank');
+  showToast('✅ Enquiry sent!');
+}
+
+// ═══════════════════════════════════════════════════════
+// ADMIN AUTH (Nexdrop full admin)
+// ═══════════════════════════════════════════════════════
 function openAdminPanel() {
   document.getElementById('adminOverlay').classList.add('open');
   if (adminLoggedIn) {
@@ -1035,7 +1180,6 @@ function openAdminPanel() {
 }
 
 document.getElementById('adminCloseBtn').onclick = () => document.getElementById('adminOverlay').classList.remove('open');
-
 document.getElementById('adminSubmitBtn').onclick = doAdminLogin;
 document.getElementById('adminPwd').addEventListener('keydown', e => { if (e.key === 'Enter') doAdminLogin(); });
 document.getElementById('adminUser').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('adminPwd').focus(); });
@@ -1043,7 +1187,7 @@ document.getElementById('adminUser').addEventListener('keydown', e => { if (e.ke
 function doAdminLogin() {
   let user = document.getElementById('adminUser').value.trim();
   let pwd = document.getElementById('adminPwd').value;
-  if (user === ADMIN_CREDENTIALS.username && pwd === ADMIN_CREDENTIALS.password) {
+  if (user === ADMIN_CREDENTIALS.username && pwd === (settings.adminPassword || ADMIN_CREDENTIALS.password)) {
     adminLoggedIn = true;
     localStorage.setItem('pe_admin_session', 'true');
     showAdminDash();
@@ -1074,27 +1218,176 @@ function showAdminDash() {
   document.getElementById('adminDash').style.display = 'block';
   document.getElementById('adminLogoutBtn').style.display = 'inline-block';
   document.getElementById('adminNavBtn').classList.add('admin-logged');
+  updateStats();
   loadAdminOrders();
   loadAdminProducts();
   loadAdminCustomers();
-  loadCategoriesList();
+  loadEnquiriesList();
+  loadCategoriesListAdmin();
+  loadSettingsForm();
 }
 
-// Admin tab switching
+// Admin Tab Switching
 document.querySelectorAll('.a-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.a-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     let panel = tab.dataset.panel;
-    ['panelOrders','panelProducts','panelAddProduct','panelAddCategory','panelCustomers'].forEach(id => {
-      document.getElementById(id).style.display = 'none';
-    });
-    let map = { orders:'panelOrders', products:'panelProducts', addproduct:'panelAddProduct', addcategory:'panelAddCategory', customers:'panelCustomers' };
-    if (map[panel]) document.getElementById(map[panel]).style.display = 'block';
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    let map = {
+      products: 'panelProducts',
+      orders: 'panelOrders',
+      customers: 'panelCustomers',
+      enquiries: 'panelEnquiries',
+      addcategory: 'panelAddCategory',
+      broadcast: 'panelBroadcast',
+      settings: 'panelSettings'
+    };
+    if (map[panel]) document.getElementById(map[panel]).classList.add('active');
+    if (panel === 'products') loadAdminProducts();
+    if (panel === 'orders') loadAdminOrders();
+    if (panel === 'customers') loadAdminCustomers();
+    if (panel === 'enquiries') loadEnquiriesList();
+    if (panel === 'addcategory') loadCategoriesListAdmin();
+    if (panel === 'broadcast') loadBRCMUsers();
+    if (panel === 'settings') loadSettingsForm();
   });
 });
 
-// ── ORDERS TABLE ──
+// ── ADMIN PRODUCTS ──
+function loadAdminProducts() {
+  let html = '';
+  for(let p of products) {
+    let imgHtml = p.imageType === 'upload' && p.imageValue
+      ? `<img src="${p.imageValue}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;">`
+      : `<div style="width:50px;height:50px;background:#e8f5f7;border-radius:6px;display:flex;align-items:center;justify-content:center;"><i class="${p.icon||'fas fa-cog'}" style="color:#0e7e8c;font-size:1.4rem;"></i></div>`;
+    html += `<tr>
+      <td>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          ${imgHtml}
+          <label style="background:#0e7e8c;color:white;padding:2px 6px;border-radius:5px;cursor:pointer;font-size:0.6rem;white-space:nowrap;">
+            📷 Photo
+            <input type="file" accept="image/*" style="display:none;" onchange="uploadAdminPhoto(${p.id}, this)">
+          </label>
+        </div>
+      </td>
+      <td><input class="admin-input" type="text" id="name_${p.id}" value="${p.name}"></td>
+      <td><input class="admin-input" type="number" id="price_${p.id}" value="${p.price}"></td>
+      <td><input class="admin-input" type="number" id="discount_${p.id}" value="${p.discount||0}"></td>
+      <td><input class="admin-input" type="number" id="courier_${p.id}" value="${p.courierCharge||0}"></td>
+      <td>
+        <textarea class="admin-input admin-input-desc" id="desc_${p.id}" rows="2" style="resize:vertical;">${p.desc}</textarea>
+        <div style="margin-top:4px;">
+          <div style="font-size:0.6rem;color:#0e7e8c;font-weight:600;margin-bottom:2px;">✨ Highlights (ek per line):</div>
+          <textarea class="admin-input" id="highlights_${p.id}" rows="3" style="resize:vertical;font-size:0.65rem;" placeholder="💧 Feature 1&#10;🔵 Feature 2">${p.highlights ? p.highlights.join('\n') : ''}</textarea>
+        </div>
+      </td>
+      <td><div class="stock-switch ${p.inStock!==false?'active':''}" onclick="toggleStock(${p.id})"></div></td>
+      <td><button class="delete-btn" onclick="deleteProduct(${p.id})">Del</button></td>
+    </tr>`;
+  }
+  document.getElementById('adminProductsList').innerHTML = html;
+}
+
+function uploadAdminPhoto(id, input) {
+  let file = input.files[0];
+  if (!file) return;
+  let reader = new FileReader();
+  reader.onload = function(e) {
+    let img = new Image();
+    img.onload = function() {
+      let canvas = document.createElement('canvas');
+      let maxSize = 800, w = img.width, h = img.height;
+      if(w > h) { if(w > maxSize) { h = h*maxSize/w; w = maxSize; } }
+      else { if(h > maxSize) { w = w*maxSize/h; h = maxSize; } }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      let p = products.find(p => p.id === id);
+      if(p) {
+        p.imageType = 'upload';
+        p.imageValue = canvas.toDataURL('image/jpeg', 0.75);
+        saveProducts(); loadAdminProducts(); renderProducts();
+        showToast('✅ Photo updated!');
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  input.value = '';
+}
+
+function toggleStock(id) {
+  let p = products.find(p => p.id === id);
+  if(p) { p.inStock = p.inStock === false ? true : false; saveProducts(); loadAdminProducts(); renderProducts(); }
+}
+
+function deleteProduct(id) {
+  if(!confirm('Delete this product?')) return;
+  products = products.filter(x => x.id !== id);
+  saveProducts(); loadAdminProducts(); renderProducts();
+  showToast('🗑️ Product deleted');
+}
+
+function addProduct() {
+  let newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+  let newProduct = {
+    id: newId,
+    name: document.getElementById('newProductName').value.trim() || 'New Product',
+    desc: document.getElementById('newProductDesc').value.trim() || 'Description',
+    highlights: [],
+    price: parseInt(document.getElementById('newProductPrice').value) || 0,
+    oldPrice: parseInt(document.getElementById('newProductOldPrice').value) || 0,
+    discount: parseInt(document.getElementById('newProductDiscount').value) || 0,
+    courierCharge: parseInt(document.getElementById('newProductCourier').value) || 0,
+    category: document.getElementById('newProductCategory').value.trim() || 'spares',
+    icon: document.getElementById('newProductIcon').value.trim() || 'fas fa-cog',
+    rating: 4.5, ratingCount: 0,
+    imageType: 'icon', imageValue: document.getElementById('newProductIcon').value.trim() || 'fas fa-cog',
+    inStock: true
+  };
+  let file = document.getElementById('newProductPhoto').files[0];
+  if(file) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      let img = new Image();
+      img.onload = function() {
+        let canvas = document.createElement('canvas');
+        canvas.width = 600; canvas.height = Math.round(600 * img.height / img.width);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        newProduct.imageType = 'upload';
+        newProduct.imageValue = canvas.toDataURL('image/jpeg', 0.75);
+        products.push(newProduct); saveProducts(); loadAdminProducts(); renderProducts();
+        showToast('✅ Product added with photo!');
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  } else {
+    products.push(newProduct); saveProducts(); loadAdminProducts(); renderProducts();
+    showToast('✅ Product added!');
+  }
+}
+
+function saveAllProducts() {
+  for(let p of products) {
+    let n = document.getElementById(`name_${p.id}`)?.value;
+    let pr = document.getElementById(`price_${p.id}`)?.value;
+    let d = document.getElementById(`discount_${p.id}`)?.value;
+    let c = document.getElementById(`courier_${p.id}`)?.value;
+    let ds = document.getElementById(`desc_${p.id}`)?.value;
+    let hl = document.getElementById(`highlights_${p.id}`)?.value;
+    if(n) p.name = n;
+    if(pr) p.price = parseInt(pr);
+    if(d !== undefined) p.discount = parseInt(d) || 0;
+    if(c !== undefined) p.courierCharge = parseInt(c) || 0;
+    if(ds !== undefined) p.desc = ds.trim();
+    if(hl !== undefined) p.highlights = hl.split('\n').map(h=>h.trim()).filter(h=>h.length>0);
+  }
+  saveProducts(); renderProducts();
+  showToast('✅ Sabhi products save ho gaye!');
+}
+
+// ── ADMIN ORDERS ──
 function loadAdminOrders() {
   let tbody = document.getElementById('ordersTableBody');
   if (orders.length === 0) {
@@ -1105,14 +1398,16 @@ function loadAdminOrders() {
     <tr>
       <td>${i + 1}</td>
       <td><strong>${o.name}</strong></td>
-      <td><a href="https://wa.me/${o.phone.replace(/\D/g,'')}" target="_blank" style="color:#0e7e8c;">${o.phone}</a></td>
+      <td><a href="https://wa.me/${(o.phone||'').replace(/\D/g,'')}" target="_blank" style="color:#0e7e8c;">${o.phone}</a></td>
       <td style="max-width:160px; font-size:0.75rem;">${o.items}</td>
       <td><strong>${fmtPrice(o.total)}</strong></td>
       <td style="font-size:0.72rem;">${o.date}</td>
       <td>
-        <select class="status-select" onchange="updateOrderStatus(${o.id}, this.value)">
+        <select style="border:1px solid #e0eaf0;border-radius:6px;padding:3px 6px;font-size:0.75rem;" onchange="updateOrderStatus(${o.id}, this.value)">
           <option ${o.status==='Pending'?'selected':''}>Pending</option>
           <option ${o.status==='Confirmed'?'selected':''}>Confirmed</option>
+          <option ${o.status==='Processing'?'selected':''}>Processing</option>
+          <option ${o.status==='Shipped'?'selected':''}>Shipped</option>
           <option ${o.status==='Delivered'?'selected':''}>Delivered</option>
           <option ${o.status==='Cancelled'?'selected':''}>Cancelled</option>
         </select>
@@ -1123,91 +1418,16 @@ function loadAdminOrders() {
 }
 
 function updateOrderStatus(id, status) {
-  id = parseInt(id);
-  let o = orders.find(x => parseInt(x.id) === id);
-  if (o) { o.status = status; localStorage.setItem('pe_orders', JSON.stringify(orders)); showToast(`✅ Status: ${status}`); }
+  let o = orders.find(x => x.id === id);
+  if (o) { o.status = status; saveOrders(); showToast(`✅ Status: ${status}`); }
 }
 function deleteOrder(id) {
-  id = parseInt(id);
   if (!confirm('Delete this order?')) return;
-  orders = orders.filter(x => parseInt(x.id) !== id);
-  localStorage.setItem('pe_orders', JSON.stringify(orders));
-  loadAdminOrders(); showToast('🗑️ Order deleted');
+  orders = orders.filter(x => x.id !== id);
+  saveOrders(); loadAdminOrders(); showToast('🗑️ Order deleted');
 }
 
-// ── PRODUCTS TABLE ──
-function loadAdminProducts() {
-  let container = document.getElementById('productsTableBody');
-  if (products.length === 0) {
-    container.innerHTML = `<div style="text-align:center; color:#a0b4c4; padding:30px;"><i class="fas fa-box-open" style="font-size:2rem; display:block; margin-bottom:10px;"></i>No products yet</div>`;
-    return;
-  }
-  container.innerHTML = products.map((p, i) => `
-    <div style="display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f0f4f7; flex-wrap:wrap;">
-      <!-- Photo -->
-      <div style="flex-shrink:0; width:64px; height:64px; border-radius:10px; overflow:hidden; background:#e8f5f7; display:flex; align-items:center; justify-content:center; border:1px solid #e0eaf0;">
-        ${p.photo
-          ? `<img src="${p.photo}" style="width:100%; height:100%; object-fit:cover;" alt="${p.name}">`
-          : `<i class="${p.icon}" style="color:#0e7e8c; font-size:1.8rem;"></i>`}
-      </div>
-      <!-- Info -->
-      <div style="flex:1; min-width:120px;">
-        <div style="font-weight:700; font-size:0.9rem; color:#0d2137;">${p.name}</div>
-        <div style="font-size:0.75rem; color:#6b8499; text-transform:capitalize; margin:2px 0;">${p.category}</div>
-        <div style="font-size:0.85rem;"><strong style="color:#0d2137;">${fmtPrice(p.price)}</strong> <span style="text-decoration:line-through; color:#b0c4d0; font-size:0.75rem;">${fmtPrice(p.oldPrice)}</span></div>
-      </div>
-      <!-- Actions -->
-      <div style="display:flex; flex-direction:column; gap:6px; flex-shrink:0;">
-        <label style="cursor:pointer; display:inline-block;">
-          <input type="file" accept="image/*" style="display:none;" onchange="changeProductPhoto(event,${p.id})">
-          <span class="btn-success" style="padding:6px 12px; font-size:0.78rem; display:inline-flex; align-items:center; gap:4px; border-radius:7px;">
-            <i class="fas fa-camera"></i> ${p.photo ? 'Change Photo' : 'Upload Photo'}
-          </span>
-        </label>
-        <button class="btn-danger" onclick="deleteProduct(${p.id})" style="padding:6px 12px; font-size:0.78rem; display:inline-flex; align-items:center; gap:4px; border-radius:7px; width:100%; justify-content:center;">
-          <i class="fas fa-trash"></i> Delete
-        </button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function changeProductPhoto(event, productId) {
-  let file = event.target.files[0];
-  if (!file || !file.type.startsWith('image/')) { showToast('⚠️ Image file select karein'); return; }
-  let reader = new FileReader();
-  reader.onload = function(e) {
-    let img = new Image();
-    img.onload = function() {
-      let canvas = document.createElement('canvas');
-      let maxW = 800;
-      let scale = img.width > maxW ? maxW / img.width : 1;
-      canvas.width = Math.round(img.width * scale);
-      canvas.height = Math.round(img.height * scale);
-      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-      let base64 = canvas.toDataURL('image/jpeg', 0.75);
-      let prod = products.find(p => parseInt(p.id) === parseInt(productId));
-      if (prod) {
-        prod.photo = base64;
-        saveProducts(); renderProducts(); loadAdminProducts();
-        showToast('✅ Photo updated!');
-      }
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-  event.target.value = '';
-}
-
-function deleteProduct(id) {
-  id = parseInt(id);
-  if (!confirm('Delete this product?')) return;
-  products = products.filter(x => parseInt(x.id) !== id);
-  saveProducts(); renderProducts(); loadAdminProducts();
-  showToast('🗑️ Product deleted');
-}
-
-// ── CUSTOMERS TABLE ──
+// ── ADMIN USERS ──
 function loadAdminCustomers() {
   let tbody = document.getElementById('customersTableBody');
   if (customers.length === 0) {
@@ -1221,14 +1441,29 @@ function loadAdminCustomers() {
       <td>${c.phone}</td>
       <td>${c.address || '—'}</td>
       <td style="font-size:0.75rem;">${c.date}</td>
-      <td><a href="https://wa.me/${c.phone.replace(/\D/g,'')}" target="_blank" class="btn-success"><i class="fab fa-whatsapp"></i> Chat</a></td>
+      <td><a href="https://wa.me/${(c.phone||'').replace(/\D/g,'')}" target="_blank" class="btn-success"><i class="fab fa-whatsapp"></i> Chat</a></td>
     </tr>
   `).join('');
 }
 
+// ── ENQUIRIES ──
+function loadEnquiriesList() {
+  let html = '';
+  for(let e of bulkEnquiries) {
+    html += `<div style="background:#f0f4f7;padding:0.8rem;border-radius:10px;margin-bottom:0.5rem;border-left:3px solid #0e7e8c;">
+      <strong>${e.name}</strong> — ${e.product || 'General Enquiry'}<br>
+      📞 ${e.phone} | 📊 ${e.quantity || '—'}<br>
+      ${e.message ? `💬 ${e.message}<br>` : ''}
+      📅 ${e.date}
+      <a href="https://wa.me/${(e.phone||'').replace(/\D/g,'')}" target="_blank" style="margin-left:8px;" class="btn-success"><i class="fab fa-whatsapp"></i></a>
+    </div>`;
+  }
+  document.getElementById('enquiriesList').innerHTML = html || '<p style="color:#a0b4c4;text-align:center;padding:30px;">No enquiries yet</p>';
+}
+
 // ── CATEGORIES ──
-function loadCategoriesList() {
-  let el = document.getElementById('categoriesList');
+function loadCategoriesListAdmin() {
+  let el = document.getElementById('categoriesListAdmin');
   if (customCategories.length === 0) {
     el.innerHTML = '<p style="color:#a0b4c4; font-size:0.85rem; margin-top:8px;">No custom categories added yet.</p>';
     return;
@@ -1245,7 +1480,7 @@ function loadCategoriesList() {
 function deleteCategory(index) {
   customCategories.splice(index, 1);
   localStorage.setItem('pe_categories', JSON.stringify(customCategories));
-  renderCategoryTabs(); loadCategoriesList();
+  renderCategoryTabs(); loadCategoriesListAdmin();
   showToast('🗑️ Category deleted');
 }
 
@@ -1256,100 +1491,142 @@ document.getElementById('saveCategoryBtn').onclick = () => {
   if (customCategories.find(c => c.key === catKey)) { showToast('⚠️ Category key already exists'); return; }
   customCategories.push({ name: catName, key: catKey });
   localStorage.setItem('pe_categories', JSON.stringify(customCategories));
-  let sel = document.getElementById('newProductCategory');
-  let opt = document.createElement('option'); opt.value = catKey; opt.textContent = catName; sel.appendChild(opt);
-  renderCategoryTabs(); loadCategoriesList();
+  renderCategoryTabs(); loadCategoriesListAdmin();
   document.getElementById('newCategoryName').value = '';
   document.getElementById('newCategoryKey').value = '';
   showToast('✅ Category added!');
 };
 
-// ══════════════════════════════════════════════════════
-// PHOTO UPLOAD (real gallery, auto-compressed)
-// ══════════════════════════════════════════════════════
-function handlePhotoUpload(event) {
-  let file = event.target.files[0];
-  if (!file) return;
-  if (!file.type.startsWith('image/')) { showToast('⚠️ Image file select karein'); return; }
-
-  let reader = new FileReader();
-  reader.onload = function(e) {
-    let img = new Image();
-    img.onload = function() {
-      // Compress to max 800px wide, quality 0.75
-      let canvas = document.createElement('canvas');
-      let maxW = 800;
-      let scale = img.width > maxW ? maxW / img.width : 1;
-      canvas.width = Math.round(img.width * scale);
-      canvas.height = Math.round(img.height * scale);
-      let ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      pendingPhotoBase64 = canvas.toDataURL('image/jpeg', 0.75);
-
-      // Show preview
-      let preview = document.getElementById('photoPreview');
-      preview.src = pendingPhotoBase64;
-      preview.style.display = 'block';
-      document.getElementById('photoUploadArea').style.display = 'none';
-      document.getElementById('photoRemoveBtn').style.display = 'inline-block';
-      showToast('📷 Photo ready! (' + Math.round(pendingPhotoBase64.length / 1024) + ' KB)');
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-  // Reset input so same file can be re-selected
-  event.target.value = '';
+// ── SETTINGS ──
+function loadSettingsForm() {
+  document.getElementById('defaultCourier').value = settings.defaultCourier;
+  document.getElementById('freeMin').value = settings.freeMin;
+  document.getElementById('whatsappNo').value = settings.whatsappNo;
+}
+function saveSettings() {
+  settings.defaultCourier = parseInt(document.getElementById('defaultCourier').value) || 49;
+  settings.freeMin = parseInt(document.getElementById('freeMin').value) || 999;
+  settings.whatsappNo = document.getElementById('whatsappNo').value;
+  saveSettingsData();
+  showToast('✅ Settings save ho gayi!');
+}
+function changePassword() {
+  let old = document.getElementById('oldPass').value;
+  let newp = document.getElementById('newPass').value;
+  let conf = document.getElementById('confirmPass').value;
+  let msg = document.getElementById('passMsg');
+  if(!old || !newp || !conf) { showPassMsg('⚠️ Sabhi fields bharna zaroori hai', '#ff9800'); return; }
+  if(old !== (settings.adminPassword || 'admin123')) { showPassMsg('❌ Current password galat hai!', '#ff4444'); return; }
+  if(newp !== conf) { showPassMsg('❌ New passwords match nahi kar rahe!', '#ff4444'); return; }
+  if(newp.length < 4) { showPassMsg('❌ Password 4+ characters ka hona chahiye!', '#ff4444'); return; }
+  settings.adminPassword = newp;
+  saveSettingsData();
+  document.getElementById('oldPass').value = '';
+  document.getElementById('newPass').value = '';
+  document.getElementById('confirmPass').value = '';
+  showPassMsg('✅ Password successfully change ho gaya!', '#4caf50');
+}
+function showPassMsg(text, color) {
+  let el = document.getElementById('passMsg');
+  if(!el) return;
+  el.style.display = 'block';
+  el.style.background = color+'22';
+  el.style.border = '1px solid '+color;
+  el.style.color = color;
+  el.innerText = text;
+  setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+function clearAllTestData() {
+  if(!confirm('⚠️ Orders, Users aur Enquiries delete karna chahte hain?\nProducts safe rahenge.')) return;
+  orders = []; customers = []; bulkEnquiries = [];
+  localStorage.removeItem('pe_orders');
+  localStorage.removeItem('pe_customers');
+  localStorage.removeItem('pe_bulk');
+  localStorage.removeItem('pe_current_user');
+  currentUser = null;
+  saveOrders(); saveCustomers(); saveBulk();
+  loadAdminOrders(); loadAdminCustomers(); loadEnquiriesList();
+  updateStats();
+  showToast('✅ Sab data clear ho gaya!');
 }
 
-function removePhoto() {
-  pendingPhotoBase64 = null;
-  document.getElementById('photoPreview').style.display = 'none';
-  document.getElementById('photoPreview').src = '';
-  document.getElementById('photoUploadArea').style.display = 'block';
-  document.getElementById('photoRemoveBtn').style.display = 'none';
+// ═══════════════════════════════════════════════════════
+// BROADCAST (Nexdrop BRCM style)
+// ═══════════════════════════════════════════════════════
+function loadBRCMUsers() {
+  let html = "";
+  let allContacts = [];
+  customers.forEach(u => { if(u.phone) allContacts.push({name:u.name, phone:u.phone, type:"user"}); });
+  bulkEnquiries.forEach(e => { if(e.phone && !allContacts.find(c=>c.phone===e.phone)) allContacts.push({name:e.name, phone:e.phone, type:"enquiry"}); });
+  if(allContacts.length === 0) {
+    document.getElementById("brcmUserList").innerHTML = "<p style='color:#999;font-size:0.8rem;text-align:center;padding:1rem;'>Koi registered user nahi hai abhi</p>";
+    updateBRCMCount(); return;
+  }
+  html = allContacts.map((c,i) => `<div class="brcm-contact"><input type="checkbox" id="brcm_${i}" value="${c.phone}" onchange="updateBRCMCount()" checked><label for="brcm_${i}">${c.name} <span style="background:${c.type==="user"?"#e8f5f7":"#fff3e0"};color:${c.type==="user"?"#0e7e8c":"#e8841a"};padding:1px 5px;border-radius:8px;font-size:0.62rem;">${c.type==="user"?"👤 User":"📋 Enquiry"}</span></label><span class="brcm-phone">📞 ${c.phone}</span></div>`).join("");
+  document.getElementById("brcmUserList").innerHTML = html;
+  updateBRCMCount();
+}
+function updateBRCMCount() {
+  let count = document.querySelectorAll("#brcmUserList input[type=checkbox]:checked").length;
+  let el = document.getElementById("brcmCount");
+  if(el) el.innerText = count + " selected";
+}
+function selectAllBRCM(val) {
+  document.querySelectorAll("#brcmUserList input[type=checkbox]").forEach(cb => cb.checked = val);
+  updateBRCMCount();
+}
+function applyBRCMTemplate() {
+  let t = document.getElementById("brcmTemplate").value;
+  let wa = settings.whatsappNo || "919006686591";
+  let msg = "";
+  if(t==="promo") msg = `🎉 *Pandey Enterprises - Special Offer!*\n\nNamaste! Aaj hamare paas ekdum khaas offer hai 💧\n\n✅ Discount on selected RO systems!\n✅ Free installation on orders above ₹5000\n✅ COD Available\n\n📞 Order: https://wa.me/${wa}\n\n- Team Pandey Enterprises`;
+  else if(t==="stock") msg = `📦 *New Stock Arrived at Pandey Enterprises!*\n\nFresh stock aa gaya hai:\n\n💧 Domestic RO Systems\n🔬 TFC Membranes\n🔧 Spare Parts\n🏭 Commercial Units\n\n📞 Order: https://wa.me/${wa}\n- Team Pandey Enterprises`;
+  else if(t==="festive") msg = `🎊 *Pandey Enterprises ki taraf se Shubhkamnayein!*\n\nIs tyohar mein aapko bahut badhaai! 🎉\n\n🎁 Festival Offers:\n✅ Flat discount on RO systems\n\nOrder: https://wa.me/${wa}\n\n- Team Pandey Enterprises`;
+  document.getElementById("brcmMessage").value = msg;
+}
+function sendBRCM() {
+  let msg = document.getElementById("brcmMessage").value.trim();
+  if(!msg) { alert("❌ Message likhein pehle!"); return; }
+  let selected = [...document.querySelectorAll("#brcmUserList input[type=checkbox]:checked")].map(cb=>cb.value);
+  if(selected.length === 0) { alert("❌ Koi user select nahi kiya!"); return; }
+  if(!confirm(`${selected.length} logo ko WhatsApp message bhejna chahte hain?\n\nHar user ka WhatsApp tab ek-ek karke khulega.`)) return;
+  let i = 0;
+  function sendNext() {
+    if(i >= selected.length) { showToast("✅ Broadcast complete! "+selected.length+" messages bheje gaye."); return; }
+    let phone = selected[i].replace(/\D/g,"");
+    if(phone.length === 10) phone = "91" + phone;
+    window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg), "_blank");
+    i++;
+    setTimeout(sendNext, 1500);
+  }
+  sendNext();
+}
+function sendBRCMCustom() {
+  let phone = document.getElementById("brcmCustomPhone").value.trim().replace(/\D/g,"");
+  let msg = document.getElementById("brcmMessage").value.trim();
+  if(!phone) { alert("❌ Phone number daalo!"); return; }
+  if(!msg) { alert("❌ Message likhein pehle!"); return; }
+  if(phone.length === 10) phone = "91" + phone;
+  window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg), "_blank");
 }
 
-// ── SAVE PRODUCT ──
-document.getElementById('saveProductBtn').onclick = () => {
-  let name = document.getElementById('newProductName').value.trim();
-  let price = parseFloat(document.getElementById('newProductPrice').value);
-  if (!name || !price) { showToast('⚠️ Naam aur price zaroori hai'); return; }
-  let newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
-  products.push({
-    id: newId, name,
-    desc: document.getElementById('newProductDesc').value.trim() || 'Quality product',
-    price,
-    oldPrice: parseFloat(document.getElementById('newProductOldPrice').value) || Math.round(price * 1.25),
-    category: document.getElementById('newProductCategory').value,
-    icon: document.getElementById('newProductIcon').value.trim() || 'fas fa-cog',
-    photo: pendingPhotoBase64 || null
-  });
-  saveProducts(); renderProducts(); loadAdminProducts();
-  // Reset form
-  ['newProductName','newProductDesc','newProductPrice','newProductOldPrice'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('newProductIcon').value = 'fas fa-cog';
-  removePhoto();
-  showToast('✅ Product added with photo!');
-};
-
-// ══════════════════════════════════════════════════════
-// EVENT LISTENERS
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════
+// EVENT LISTENERS & INIT
+// ═══════════════════════════════════════════════════════
 document.getElementById('cartOpenBtn').onclick = openCart;
 document.getElementById('cartCloseBtn').onclick = closeCart;
 document.getElementById('overlay').onclick = closeCart;
 document.getElementById('waOrderBtn').onclick = sendWhatsAppOrder;
-document.getElementById('commercialEnqBtn').onclick = () =>
-  window.open('https://wa.me/919006686591?text=Commercial%20RO%20enquiry%20-%20Please%20send%20quote', '_blank');
+document.getElementById('commercialEnqBtn').onclick = openBulkEnquiryModal;
 
-// Close user modal on outside click
 document.getElementById('userModal').addEventListener('click', function(e) {
   if (e.target === this) closeUserModal();
 });
+document.getElementById('bulkEnquiryModal').addEventListener('click', function(e) {
+  if (e.target === this) closeBulkEnquiryModal();
+});
 
-// ══════════════════════════════════════════════════════
 // INIT
-// ══════════════════════════════════════════════════════
 updateUserNav();
 if (adminLoggedIn) {
   document.getElementById('adminNavBtn').classList.add('admin-logged');
@@ -1357,6 +1634,7 @@ if (adminLoggedIn) {
 renderCategoryTabs();
 renderProducts();
 updateCart();
+updateStats();
 </script>
 </body>
 </html>
